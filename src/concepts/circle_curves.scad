@@ -1,6 +1,6 @@
-cabin_height = 1220; // millimeters
-cabin_width = 1520; // millimeters
-cabin_length = 2740;
+cabin_height = 1220; // 4ft
+cabin_width = 1520; // 5ft
+cabin_length = 2740; // 9ft
 
 $fn = 50; // fragment number
 
