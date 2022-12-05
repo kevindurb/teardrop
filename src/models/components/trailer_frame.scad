@@ -9,3 +9,5 @@ module trailer_frame() {
     color("#888")
       cube([trailer_width, trailer_length, trailer_thickness], center = true);
 }
+
+trailer_frame();

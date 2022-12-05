@@ -9,3 +9,5 @@ module trailer_floor() {
     color("#f2ba52")
       cube([floor_width, floor_length, floor_thickness], center = true);
 }
+
+trailer_floor();
