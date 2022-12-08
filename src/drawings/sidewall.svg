@@ -2,14 +2,14 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
-   version="1.1"
-   id="svg5"
-   xml:space="preserve"
+   sodipodi:docname="sidewall.svg"
    inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
-   sodipodi:docname="sideshape.svg"
+   xml:space="preserve"
+   id="svg5"
+   version="1.1"
+   viewBox="0 0 3048 1530"
+   height="1530mm"
+   width="3048mm"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -21,13 +21,13 @@
      borderopacity="0.25"
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="true"
+     inkscape:pagecheckerboard="false"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.08086703"
-     inkscape:cx="-1527.1984"
-     inkscape:cy="3382.0953"
+     inkscape:zoom="0.10610016"
+     inkscape:cx="5763.422"
+     inkscape:cy="3331.7575"
      inkscape:window-width="2560"
      inkscape:window-height="1387"
      inkscape:window-x="0"
@@ -35,7 +35,9 @@
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"><inkscape:grid
        type="xygrid"
-       id="grid1569" /></sodipodi:namedview><defs
+       id="grid1569"
+       originx="0"
+       originy="0" /></sodipodi:namedview><defs
      id="defs2" /><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -47,6 +49,6 @@
        id="image1103"
        x="7.0587435"
        y="4.9325662" /><path
-       style="fill:#ffffff;stroke:#03a642;stroke-width:3.92483"
-       d="m -1170.864,725.54822 2488.1322,-4.2899 c 0,0 175.8851,-120.1169 154.4357,-373.21988 -21.4494,-253.103089 0,-819.3676 -823.65754,-836.52715 -823.6575,-17.15953 -1377.05238,184.46497 -1377.05238,184.46497 0,0 -759.30928,321.741211 -441.85798,1029.57196 z"
+       style="fill:#ffffff;stroke:#03a642;stroke-width:3.95944"
+       d="m 204.4692,1513.1513 2510.0738,-0.029 c 0,0 177.4868,-120.8721 155.955,-376.2443 -21.5312,-255.37191 0.3464,-826.59287 -830.5666,-845.32687 -830.913,-18.7339 -1389.27291,183.71242 -1389.27291,183.71242 0,0 -766.1407,323.26652 -446.18929,1037.88745 z"
        id="path2408" /></g></svg>
