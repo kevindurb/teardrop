@@ -1,4 +1,5 @@
 use <../lib/convert.scad>
+use <../sketches/side_sketch.scad>
 
 side_thickness = inches(1.25);
 
