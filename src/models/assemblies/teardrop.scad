@@ -6,7 +6,7 @@ use <../components/trailer_side.scad>
 
 
 module passenger_side() {
-  translate([feet(-2.5), inches(-44), 0])
+  translate([feet(-2.5) + inches(0.25), inches(-45), 0])
     rotate([0, 0, -90])
       trailer_side();
 }
