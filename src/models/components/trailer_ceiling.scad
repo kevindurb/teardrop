@@ -37,10 +37,22 @@ module trailer_ceiling_half() {
   }
 }
 
+module trailer_ceiling_galley_cutout() {
+  translate([feet(-8) + inches(-12), -(ceiling_width / 2) - 1, inches(-3)])
+    cube([inches(30), ceiling_width + 2, feet(4)]);
+}
+
 module trailer_ceiling() {
-  mirror([0, 1, 0])
-    trailer_ceiling_half();
-  trailer_ceiling_half();
+  difference() {
+    union() {
+      mirror([0, 1, 0])
+        trailer_ceiling_half();
+      trailer_ceiling_half();
+    }
+
+    // cut out galley
+    trailer_ceiling_galley_cutout();
+  }
 }
 
 trailer_ceiling();

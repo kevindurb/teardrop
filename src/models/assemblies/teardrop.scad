@@ -4,9 +4,11 @@ use <../components/trailer_frame.scad>
 use <../components/trailer_floor.scad>
 use <../components/trailer_side.scad>
 use <../components/trailer_ceiling.scad>
+use <../components/trailer_galley_door.scad>
 
 show_ceiling = true;
 show_sides = true;
+show_galley_door = true;
 
 module passenger_side() {
   translate([feet(-2.5) + inches(0.25), inches(-45), 0])
@@ -28,6 +30,12 @@ if (show_ceiling) {
   translate([0, feet(-3) + inches(-9), 0])
   rotate([0, 0, -90])
     trailer_ceiling();
+}
+
+if (show_galley_door) {
+  translate([0, feet(-3) + inches(-9), 0])
+  rotate([0, 0, -90])
+    trailer_galley_door();
 }
 
 translate([0, inches(4.5), 0])
