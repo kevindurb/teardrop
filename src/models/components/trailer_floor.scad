@@ -2,7 +2,7 @@ use <../lib/convert.scad>
 
 floor_thickness = inches(2.5);
 floor_width = feet(5);
-floor_length = feet(9);
+floor_length = feet(8) + inches(3);
 
 module trailer_floor() {
   translate([0, 0, floor_thickness / 2])
