@@ -40,7 +40,7 @@ module cabinet_structure() {
 }
 
 module inside_cabinet_doors(open = 0) {
-  small_width = inches(12.325);
+  small_width = inches(12.75);
   large_width = inches(17.425);
   color("#ccd")
   union() {
@@ -51,7 +51,7 @@ module inside_cabinet_doors(open = 0) {
     translate([-small_width, inches(-0.75), inches(-17.5)])
       cube([small_width, inches(0.75), inches(17.5)]);
     // 3
-    translate([(small_width + large_width + large_width), 0, 0])
+    translate([(cabinet_unit_width - small_width), 0, 0])
     translate([open * inches(0.75), 0, 0])
     rotate([0, 0, open * -90])
     translate([0, inches(-0.75), inches(-17.5)])
@@ -75,4 +75,4 @@ module teardrop_cabinets(silverware_open = 0, electrical_open = 0, inside_cabine
   }
 }
 
-teardrop_cabinets(0.25, 0.5, 1);
+teardrop_cabinets(0.25, 0.5, 0);
