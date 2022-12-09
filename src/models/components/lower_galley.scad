@@ -11,17 +11,17 @@ module counter_top() {
 
 module foot_wall() {
   color_wood()
-    cube([cabinet_unit_width, inches(0.75), inches(15)]);
+    cube([cabinet_unit_width, inches(0.75), inches(17)]);
 }
 
 module bottom_cabinet_divider() {
   color_wood()
-    cube([inches(0.75), feet(1.5), inches(15)]);
+    cube([inches(0.75), feet(1.5), inches(17)]);
 }
 
 module water_jug_divider() {
   color_wood()
-    cube([inches(0.75), feet(1.5) - inches(0.75), inches(15)]);
+    cube([inches(0.75), feet(1.5) - inches(0.75), inches(17)]);
 }
 
 module electrical_cabinet_top() {
@@ -36,21 +36,24 @@ module electrical_cabinet_door(open = 0) {
     cube([inches(11.5), inches(0.75), inches(12)]);
 }
 
+module cooler_slide(open = 0) {
+}
+
 module lower_galley(silverware_open = 0, electrical_open = 0) {
   union() {
     translate([0, inches(-0.75), 0])
       foot_wall();
-    translate([0, feet(-1), inches(15)])
+    translate([0, feet(-1), inches(17)])
       counter_top();
-    translate([0 + feet(2) + inches(9), 0, 0])
+    translate([inches(30), 0, 0])
       bottom_cabinet_divider();
-    translate([0 + feet(4), 0, 0])
+    translate([feet(4), 0, 0])
       water_jug_divider();
-    translate([0 + feet(4) + inches(0.75), 0, inches(12)])
+    translate([feet(4) + inches(0.75), 0, inches(12)])
       electrical_cabinet_top();
-    translate([0 + feet(4), feet(1.5) - inches(0.75), 0])
+    translate([feet(4), feet(1.5) - inches(0.75), 0])
       electrical_cabinet_door(electrical_open);
-    translate([0 + feet(4), feet(1.5) - inches(0.75), inches(12)])
+    translate([feet(4), feet(1.5) - inches(0.75), inches(12)])
       silverware_drawer(silverware_open);
   }
 }

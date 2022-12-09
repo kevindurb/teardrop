@@ -5,7 +5,7 @@ use <./lower_galley.scad>
 use <./upper_galley.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
-main_cabinets_height = inches(16);
+main_cabinets_height = inches(14);
 
 module cabinet_structure() {
   color_wood()
@@ -49,27 +49,27 @@ module inside_cabinet_doors(open = 0) {
     translate([small_width, 0, 0])
     translate([open * inches(-0.75), 0, 0])
     rotate([0, 0, open * 90])
-    translate([-small_width, inches(-0.75), inches(-17.5)])
-      cube([small_width, inches(0.75), inches(17.5)]);
+    translate([-small_width, inches(-0.75), inches(-15.5)])
+      cube([small_width, inches(0.75), inches(15.5)]);
     // 3
     translate([(cabinet_unit_width - small_width), 0, 0])
     translate([open * inches(0.75), 0, 0])
     rotate([0, 0, open * -90])
-    translate([0, inches(-0.75), inches(-17.5)])
-      cube([small_width, inches(0.75), inches(17.5)]);
+    translate([0, inches(-0.75), inches(-15.5)])
+      cube([small_width, inches(0.75), inches(15.5)]);
   }
 }
 
 module teardrop_cabinets(silverware_open = 0, electrical_open = 0, inside_cabinets_open = 0) {
   center_offset = -cabinet_unit_width / 2;
-  upper_galley_zoffset = main_cabinets_height + inches(15) +inches(0.75);
+  upper_galley_zoffset = main_cabinets_height + inches(17) +inches(0.75);
   union() {
     translate([center_offset, 0, 0])
       lower_galley(silverware_open, electrical_open);
     translate([center_offset, 0, upper_galley_zoffset])
       upper_galley();
 
-    translate([center_offset, feet(-1), inches(15) + inches(0.75)])
+    translate([center_offset, feet(-1), inches(17) + inches(0.75)])
       cabinet_structure();
     translate([center_offset, feet(-1), feet(2) + inches(8.5)])
       inside_cabinet_doors(inside_cabinets_open);

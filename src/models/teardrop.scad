@@ -8,6 +8,7 @@ use <./components/teardrop_galley_door.scad>
 use <./components/teardrop_cabinets.scad>
 use <./components/headboard.scad>
 use <./components/mattress.scad>
+use <./components/cooler.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
@@ -57,7 +58,10 @@ translate([0, inches(4.5), 0])
   teardrop_floor();
 
 translate([feet(-2.5) + inches(0.25), feet(-3) + inches(-8.25), inches(2.5)])
-mattress();
+  mattress();
+
+translate([feet(-2.5) + inches(1.25), feet(3) + inches(1), inches(3.25)])
+  cooler();
 
 translate([0, inches(-44.25), inches(2.5)])
   headboard();
