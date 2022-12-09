@@ -42,7 +42,7 @@ if (show_galley_door) {
     teardrop_galley_door();
 }
 
-translate([0, feet(2) + inches(9), inches(2.5)])
+translate([0, inches(36), inches(2.5)])
   teardrop_cabinets();
 
 translate([0, inches(4.5), 0])

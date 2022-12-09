@@ -8,5 +8,6 @@
  - [ ] Make ceiling lip over walls
  - [ ] Cutout for stargazer window
  - [ ] Cutout for fan
- - [ ] Cabinets
+ - [x] Cabinets
  - [ ] Headboard
+ - [ ] Position cabinet unit correctly from rear
