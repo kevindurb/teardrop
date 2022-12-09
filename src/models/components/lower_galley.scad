@@ -36,21 +36,20 @@ module electrical_cabinet_door(open = 0) {
 }
 
 module lower_galley(silverware_open = 0, electrical_open = 0) {
-  center_offset = -cabinet_unit_width / 2;
   union() {
-    translate([center_offset, 0, 0])
+    translate([0, 0, 0])
       foot_wall();
-    translate([center_offset, feet(-1), inches(15)])
+    translate([0, feet(-1), inches(15)])
       counter_top();
-    translate([center_offset + feet(2) + inches(9), 0, 0])
+    translate([0 + feet(2) + inches(9), 0, 0])
       bottom_cabinet_divider();
-    translate([center_offset + feet(4), 0, 0])
+    translate([0 + feet(4), 0, 0])
       water_jug_divider();
-    translate([center_offset + feet(4) + inches(0.75), 0, inches(12)])
+    translate([0 + feet(4) + inches(0.75), 0, inches(12)])
       electrical_cabinet_top();
-    translate([center_offset + feet(4), feet(1.5) - inches(0.75), 0])
+    translate([0 + feet(4), feet(1.5) - inches(0.75), 0])
       electrical_cabinet_door(electrical_open);
-    translate([center_offset + feet(4), feet(1.5) - inches(0.75), inches(12)])
+    translate([0 + feet(4), feet(1.5) - inches(0.75), inches(12)])
       silverware_drawer(silverware_open);
   }
 }
