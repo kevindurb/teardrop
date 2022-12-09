@@ -7,10 +7,15 @@ use <./components/teardrop_ceiling.scad>
 use <./components/teardrop_galley_door.scad>
 use <./components/teardrop_cabinets.scad>
 
+/* [Show / Hide] */
 show_ceiling = true;
 show_sides = true;
 show_galley_door = true;
-galley_open = false;
+
+/* [Open / Close] */
+galley_open = 0; // [0:0.1:1]
+silverware_open = 0; // [0:0.1:1]
+electrical_open = 0; // [0:0.1:1]
 
 module passenger_side() {
   translate([feet(-2.5) + inches(0.25), inches(-45), 0])
@@ -35,7 +40,7 @@ if (show_ceiling) {
 }
 
 if (show_galley_door) {
-  galley_deg = galley_open ? 90 : 0;
+  galley_deg = galley_open * 90;
   translate([0, feet(3) + inches(0.25), inches(40.75)])
   rotate([galley_deg, 0, 0])
   rotate([0, 0, -90])
@@ -43,7 +48,7 @@ if (show_galley_door) {
 }
 
 translate([0, inches(36), inches(2.5)])
-  teardrop_cabinets();
+  teardrop_cabinets(silverware_open, electrical_open);
 
 translate([0, inches(4.5), 0])
   teardrop_floor();
