@@ -16,20 +16,21 @@
             "show_sides": "true",
             "silverware_open": "0"
         },
-        "X-Ray": {
-            "electrical_open": "0",
-            "galley_open": "0",
-            "show_ceiling": "true",
-            "show_galley_door": "true",
-            "show_sides": "false",
-            "silverware_open": "0"
-        },
         "design default values": {
             "electrical_open": "0",
             "galley_open": "0",
             "show_ceiling": "true",
             "show_galley_door": "true",
             "show_sides": "true",
+            "silverware_open": "0"
+        },
+        "X-Ray": {
+            "cabinets_open": "1",
+            "electrical_open": "0",
+            "galley_open": "0",
+            "show_ceiling": "true",
+            "show_galley_door": "true",
+            "show_sides": "false",
             "silverware_open": "0"
         }
     },

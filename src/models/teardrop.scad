@@ -16,6 +16,7 @@ show_galley_door = true;
 galley_open = 0; // [0:0.1:1]
 silverware_open = 0; // [0:0.1:1]
 electrical_open = 0; // [0:0.1:1]
+cabinets_open = 0; // [0:0.1:1]
 
 module passenger_side() {
   translate([feet(-2.5) + inches(0.25), inches(-45), 0])
@@ -48,7 +49,7 @@ if (show_galley_door) {
 }
 
 translate([0, inches(36), inches(2.5)])
-  teardrop_cabinets(silverware_open, electrical_open);
+  teardrop_cabinets(silverware_open, electrical_open, cabinets_open);
 
 translate([0, inches(4.5), 0])
   teardrop_floor();

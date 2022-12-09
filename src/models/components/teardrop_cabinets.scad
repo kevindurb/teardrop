@@ -1,4 +1,5 @@
 use <../lib/convert.scad>
+use <./silverware_drawer.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
 main_cabinets_height = inches(16);
@@ -34,7 +35,12 @@ module foot_wall() {
 
 module spice_rack_wall() {
   color("#f2ba52")
-    cube([cabinet_unit_width, inches(0.75), inches(3.75)]);
+    cube([cabinet_unit_width, inches(0.75), inches(4)]);
+}
+
+module spice_rack_lip() {
+  color("#f2ba52")
+    cube([cabinet_unit_width, inches(0.75), inches(1)]);
 }
 
 module top_cabinet_front() {
@@ -103,35 +109,6 @@ module inside_cabinet_doors(open = 0) {
   }
 }
 
-module silverware_drawer(open = 0) {
-  translate([0, open * inches(14.5), 0])
-  union() {
-    // front
-    color("#ccd")
-    cube([inches(11.5), inches(0.75), inches(3)]);
-
-    // right side
-    color("#f2ba52")
-    translate([inches(0.75), inches(-15), inches(0.75)])
-      cube([inches(0.5), inches(15), inches(2.25)]);
-
-    // left side
-    color("#f2ba52")
-    translate([inches(11), inches(-15), inches(0.75)])
-      cube([inches(0.5), inches(15), inches(2.25)]);
-
-    // bottom
-    color("#f2ba52")
-    translate([inches(1), inches(-15), inches(0.75)])
-      cube([inches(10), inches(15), inches(0.25)]);
-
-    // back
-    color("#f2ba52")
-    translate([inches(0.75), inches(-15), inches(0.75)])
-      cube([inches(10.75), inches(0.5), inches(2.25)]);
-  }
-}
-
 module teardrop_cabinets(silverware_open = 0, electrical_open = 0, inside_cabinets_open = 0) {
   center_offset = -cabinet_unit_width / 2;
   spice_rack_zoffset = main_cabinets_height + inches(15) +inches(0.75);
@@ -144,10 +121,13 @@ module teardrop_cabinets(silverware_open = 0, electrical_open = 0, inside_cabine
       cabinet_walls();
     translate([center_offset, feet(-1), spice_rack_zoffset])
       cabinet_top();
-    translate([center_offset, 0, spice_rack_zoffset + inches(0.75)])
-      spice_rack_wall();
     translate([center_offset, feet(-1), spice_rack_zoffset + inches(0.75)])
       top_cabinet_front();
+
+    translate([center_offset, 0, spice_rack_zoffset + inches(0.75)])
+      spice_rack_wall();
+    translate([center_offset, inches(5), spice_rack_zoffset + inches(0.75)])
+      spice_rack_lip();
 
     translate([center_offset + feet(2) + inches(9), 0, 0])
       bottom_cabinet_divider();
