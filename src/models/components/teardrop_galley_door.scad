@@ -2,7 +2,7 @@ use <../lib/convert.scad>
 use <./teardrop_ceiling.scad>
 
 module teardrop_galley_door() {
-  translate([feet(6.5), 0, feet(-3.5)])
+  translate([inches(81.25), 0, inches(-40.75)])
   intersection() {
     union() {
       mirror([0, 1, 0])

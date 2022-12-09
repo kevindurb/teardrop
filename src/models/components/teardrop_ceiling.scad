@@ -31,7 +31,7 @@ module teardrop_ceiling_half() {
 
 module teardrop_ceiling_galley_cutout() {
   translate([feet(-8) + inches(-12), -(ceiling_width / 2) - 1, inches(-3)])
-    cube([inches(30), ceiling_width + 2, feet(4)]);
+    cube([inches(26.25), ceiling_width + 2, feet(4)]);
 }
 
 module teardrop_ceiling() {

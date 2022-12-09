@@ -27,7 +27,7 @@ module foot_wall() {
 }
 
 module spice_rack_wall() {
-  cube([cabinet_unit_width, inches(0.75), inches(4)]);
+  cube([cabinet_unit_width, inches(0.75), inches(3.75)]);
 }
 
 module top_cabinet_front() {

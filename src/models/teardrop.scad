@@ -36,7 +36,7 @@ if (show_ceiling) {
 
 if (show_galley_door) {
   galley_deg = galley_open ? 90 : 0;
-  translate([0, feet(2.75), feet(3.5)])
+  translate([0, feet(3) + inches(0.25), inches(40.75)])
   rotate([galley_deg, 0, 0])
   rotate([0, 0, -90])
     teardrop_galley_door();
