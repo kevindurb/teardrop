@@ -6,6 +6,7 @@ use <./components/teardrop_side.scad>
 use <./components/teardrop_ceiling.scad>
 use <./components/teardrop_galley_door.scad>
 use <./components/teardrop_cabinets.scad>
+use <./components/headboard.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
@@ -53,5 +54,8 @@ translate([0, inches(36), inches(2.5)])
 
 translate([0, inches(4.5), 0])
   teardrop_floor();
+
+translate([0, inches(-45), inches(2.5)])
+  headboard();
 
 teardrop_frame();

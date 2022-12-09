@@ -38,7 +38,7 @@ module electrical_cabinet_door(open = 0) {
 
 module lower_galley(silverware_open = 0, electrical_open = 0) {
   union() {
-    translate([0, 0, 0])
+    translate([0, inches(-0.75), 0])
       foot_wall();
     translate([0, feet(-1), inches(15)])
       counter_top();
