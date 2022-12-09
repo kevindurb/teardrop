@@ -1,35 +1,36 @@
 use <../lib/convert.scad>
+use <../lib/colors.scad>
 use <./silverware_drawer.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
 
 module counter_top() {
-  color("#ccd")
+  color_hdpe()
     cube([cabinet_unit_width, feet(2.5), inches(0.75)]);
 }
 
 module foot_wall() {
-  color("#f2ba52")
+  color_wood()
     cube([cabinet_unit_width, inches(0.75), inches(15)]);
 }
 
 module bottom_cabinet_divider() {
-  color("#f2ba52")
+  color_wood()
     cube([inches(0.75), feet(1.5), inches(15)]);
 }
 
 module water_jug_divider() {
-  color("#f2ba52")
+  color_wood()
     cube([inches(0.75), feet(1.5) - inches(0.75), inches(15)]);
 }
 
 module electrical_cabinet_top() {
-  color("#f2ba52")
+  color_wood()
     cube([inches(10.75), feet(1.5) - inches(0.75), inches(0.75)]);
 }
 
 module electrical_cabinet_door(open = 0) {
-  color("#ccd")
+  color_hdpe()
   translate([open * inches(0.75), 0, 0])
   rotate([0, 0, open * 90])
     cube([inches(11.5), inches(0.75), inches(12)]);

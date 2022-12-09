@@ -1,4 +1,5 @@
 use <../lib/convert.scad>
+use <../lib/colors.scad>
 use <./silverware_drawer.scad>
 use <./lower_galley.scad>
 use <./upper_galley.scad>
@@ -7,7 +8,7 @@ cabinet_unit_width = feet(4) + inches(11.5);
 main_cabinets_height = inches(16);
 
 module cabinet_structure() {
-  color("#f2ba52")
+  color_wood()
   union() {
     // wall 1
     translate([inches(12), 0, 0])
@@ -42,7 +43,7 @@ module cabinet_structure() {
 module inside_cabinet_doors(open = 0) {
   small_width = inches(12.75);
   large_width = inches(17.425);
-  color("#ccd")
+  color_hdpe()
   union() {
     // 1
     translate([small_width, 0, 0])

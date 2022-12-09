@@ -1,13 +1,5 @@
 {
     "parameterSets": {
-        "Showcase": {
-            "electrical_open": "0.5",
-            "galley_open": "1",
-            "show_ceiling": "true",
-            "show_galley_door": "true",
-            "show_sides": "true",
-            "silverware_open": "0.5"
-        },
         "Closed": {
             "electrical_open": "0",
             "galley_open": "0",
@@ -32,6 +24,15 @@
             "show_galley_door": "true",
             "show_sides": "false",
             "silverware_open": "0"
+        },
+        "Showcase": {
+            "cabinets_open": "0.8",
+            "electrical_open": "0.5",
+            "galley_open": "1",
+            "show_ceiling": "true",
+            "show_galley_door": "true",
+            "show_sides": "true",
+            "silverware_open": "0.5"
         }
     },
     "fileFormatVersion": "1"
