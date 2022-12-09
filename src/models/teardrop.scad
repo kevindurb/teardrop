@@ -5,6 +5,7 @@ use <./components/teardrop_floor.scad>
 use <./components/teardrop_side.scad>
 use <./components/teardrop_ceiling.scad>
 use <./components/teardrop_galley_door.scad>
+use <./components/teardrop_cabinets.scad>
 
 show_ceiling = true;
 show_sides = true;
@@ -40,6 +41,9 @@ if (show_galley_door) {
   rotate([0, 0, -90])
     teardrop_galley_door();
 }
+
+translate([0, feet(2) + inches(9), inches(2.5)])
+  teardrop_cabinets();
 
 translate([0, inches(4.5), 0])
   teardrop_floor();

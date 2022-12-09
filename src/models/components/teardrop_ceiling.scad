@@ -1,13 +1,5 @@
 use <../lib/convert.scad>
 
-/**
- * TODO:
- * - Make lip over walls
- * - Cutout for stargazer window
- * - Cutout for fan
- * - Make galley door
- */
-
 ceiling_width = feet(5);
 ceiling_thickness = inches(1.75);
 
