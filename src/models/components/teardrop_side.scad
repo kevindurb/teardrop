@@ -29,7 +29,7 @@ module door_cutout() {
 }
 
 
-module trailer_side() {
+module teardrop_side() {
   difference() {
     // side shape from dxf
     translate([front_offset, 0, bottom_offset])
@@ -49,4 +49,4 @@ module trailer_side() {
   }
 }
 
-trailer_side();
+teardrop_side();

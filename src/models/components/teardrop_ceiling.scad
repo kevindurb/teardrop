@@ -16,7 +16,7 @@ bottom_offset = inches(-0.67);
 front_offset = feet(-8) + inches(-11.07);
 scale_fix = 1.002;
 
-module trailer_ceiling_half() {
+module teardrop_ceiling_half() {
   cutout_scale = (feet(4) - ceiling_thickness) / feet(4);
   difference() {
     // side shape from dxf
@@ -37,22 +37,22 @@ module trailer_ceiling_half() {
   }
 }
 
-module trailer_ceiling_galley_cutout() {
+module teardrop_ceiling_galley_cutout() {
   translate([feet(-8) + inches(-12), -(ceiling_width / 2) - 1, inches(-3)])
     cube([inches(30), ceiling_width + 2, feet(4)]);
 }
 
-module trailer_ceiling() {
+module teardrop_ceiling() {
   difference() {
     union() {
       mirror([0, 1, 0])
-        trailer_ceiling_half();
-      trailer_ceiling_half();
+        teardrop_ceiling_half();
+      teardrop_ceiling_half();
     }
 
     // cut out galley
-    trailer_ceiling_galley_cutout();
+    teardrop_ceiling_galley_cutout();
   }
 }
 
-trailer_ceiling();
+teardrop_ceiling();

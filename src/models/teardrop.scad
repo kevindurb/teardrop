@@ -1,10 +1,10 @@
-use <../lib/convert.scad>
+use <./lib/convert.scad>
 
-use <../components/trailer_frame.scad>
-use <../components/trailer_floor.scad>
-use <../components/trailer_side.scad>
-use <../components/trailer_ceiling.scad>
-use <../components/trailer_galley_door.scad>
+use <./components/teardrop_frame.scad>
+use <./components/teardrop_floor.scad>
+use <./components/teardrop_side.scad>
+use <./components/teardrop_ceiling.scad>
+use <./components/teardrop_galley_door.scad>
 
 show_ceiling = true;
 show_sides = true;
@@ -14,7 +14,7 @@ galley_open = false;
 module passenger_side() {
   translate([feet(-2.5) + inches(0.25), inches(-45), 0])
   rotate([0, 0, -90])
-    trailer_side();
+    teardrop_side();
 }
 
 module driver_side() {
@@ -30,7 +30,7 @@ if (show_sides) {
 if (show_ceiling) {
   translate([0, feet(-3) + inches(-9), 0])
   rotate([0, 0, -90])
-    trailer_ceiling();
+    teardrop_ceiling();
 }
 
 if (show_galley_door) {
@@ -38,10 +38,10 @@ if (show_galley_door) {
   translate([0, feet(2.75), feet(3.5)])
   rotate([galley_deg, 0, 0])
   rotate([0, 0, -90])
-    trailer_galley_door();
+    teardrop_galley_door();
 }
 
 translate([0, inches(4.5), 0])
-  trailer_floor();
+  teardrop_floor();
 
-trailer_frame();
+teardrop_frame();
