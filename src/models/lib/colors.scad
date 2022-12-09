@@ -12,3 +12,8 @@ module color_steel() {
   color("#888")
     children();
 }
+
+module color_white() {
+  color("#fafafa")
+    children();
+}
