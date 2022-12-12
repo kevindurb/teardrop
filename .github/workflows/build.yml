@@ -16,5 +16,8 @@ jobs:
         - ${{ github.workspace }}:/openscad
     needs: prepare
     steps:
+      - name: Create dist directory
+        run: mkdir ./dist
+
       - name: Build STL
         run: openscad ./src/models/teardrop.scad -o ./dist/teardrop.stl
