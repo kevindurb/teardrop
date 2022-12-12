@@ -2,7 +2,7 @@ use <../lib/convert.scad>
 use <../lib/colors.scad>
 
 frame_width = feet(5);
-frame_length = feet(9);
+frame_length = feet(8);
 frame_thickness = inches(3);
 
 module teardrop_frame() {
