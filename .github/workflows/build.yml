@@ -1,0 +1,20 @@
+name: Build STL
+
+on: [push]
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: openscad/openscad
+      volumes:
+        - $GITHUB_WORKSPACE:/openscad
+    needs: prepare
+    steps:
+      - name: Build STL
+        run: openscad ./src/models/teardrop.scad -o ./dist/teardrop.stl

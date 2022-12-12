@@ -1,0 +1,8 @@
+---
+version: '3.8'
+
+services:
+  openscad:
+    image: openscad/openscad
+    volumes:
+      - ./:/openscad

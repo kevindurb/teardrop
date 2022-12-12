@@ -1,0 +1,20 @@
+{
+  "name": "teardrop",
+  "version": "1.0.0",
+  "description": "## openSCAD",
+  "main": "index.js",
+  "scripts": {
+    "openscad": "docker-compose run openscad openscad"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevindurb/teardrop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevindurb/teardrop/issues"
+  },
+  "homepage": "https://github.com/kevindurb/teardrop#readme"
+}
