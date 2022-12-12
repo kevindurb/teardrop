@@ -2,7 +2,7 @@
 
 ## openSCAD
 
-- Top Level Teardrop Assembly `./src/models/assemblies/teardrop.scad`
+- Top Level Teardrop Assembly `./src/models/teardrop.scad`
 
 ## TODO
  - [ ] Make ceiling lip over walls
