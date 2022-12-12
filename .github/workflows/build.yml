@@ -20,4 +20,4 @@ jobs:
         run: mkdir ./dist
 
       - name: Build STL
-        run: openscad ./src/models/teardrop.scad -o ./dist/teardrop.stl
+        run: openscad /openscad/src/models/teardrop.scad -o /openscad/dist/teardrop.stl
