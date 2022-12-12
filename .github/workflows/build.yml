@@ -13,7 +13,7 @@ jobs:
     container:
       image: openscad/openscad
       volumes:
-        - $GITHUB_WORKSPACE:/openscad
+        - ${GITHUB_WORKSPACE}:/openscad
     needs: prepare
     steps:
       - name: Build STL
