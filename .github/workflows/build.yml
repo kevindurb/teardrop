@@ -10,14 +10,11 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    container:
-      image: openscad/openscad
-      volumes:
-        - ${{ github.workspace }}:/openscad
+    container: openscad/openscad
     needs: prepare
     steps:
       - name: Create dist directory
         run: mkdir ./dist
 
       - name: Build STL
-        run: openscad /openscad/src/models/teardrop.scad -o /openscad/dist/teardrop.stl
+        run: openscad ./src/models/teardrop.scad -o ./dist/teardrop.stl
