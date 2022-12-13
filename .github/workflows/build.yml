@@ -12,12 +12,17 @@ jobs:
       - name: Create dist directory
         run: mkdir ./dist
 
-      - name: Build STL
-        run: openscad ./src/models/teardrop.scad -o ./dist/teardrop.stl
+      - name: Build teardrop.scad
+        run: openscad ./src/models/assemblies/teardrop.scad -o ./dist/teardrop.stl
+
+      - name: Build shell.scad
+        run: openscad ./src/models/assemblies/shell.scad -o ./dist/shell.stl
 
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./dist/teardrop.stl
+          files: |
+            ./dist/teardrop.stl
+            ./dist/shell.stl
 

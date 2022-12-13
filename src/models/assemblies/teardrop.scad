@@ -1,14 +1,14 @@
-use <./lib/convert.scad>
+use <../lib/convert.scad>
 
-use <./components/teardrop_frame.scad>
-use <./components/teardrop_floor.scad>
-use <./components/teardrop_galley_door.scad>
-use <./components/teardrop_cabinets.scad>
-use <./components/headboard.scad>
-use <./components/mattress.scad>
-use <./components/cooler.scad>
+use <../components/teardrop_frame.scad>
+use <../components/teardrop_floor.scad>
+use <../components/teardrop_galley_door.scad>
+use <../components/teardrop_cabinets.scad>
+use <../components/headboard.scad>
+use <../components/mattress.scad>
+use <../components/cooler.scad>
 
-use <./assemblies/shell.scad>
+use <./shell.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
