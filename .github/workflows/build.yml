@@ -18,6 +18,9 @@ jobs:
       - name: Build shell.scad
         run: openscad ./src/models/assemblies/shell.scad -o ./dist/shell.stl
 
+      - name: Build preview image
+        run: xvfb-run -a openscad ./src/models/assemblies/teardrop.scad -o ./dist/preview.png
+
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15
         if: startsWith(github.ref, 'refs/tags/')
@@ -25,4 +28,5 @@ jobs:
           files: |
             ./dist/teardrop.stl
             ./dist/shell.stl
+            ./dist/preview.png
 
