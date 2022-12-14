@@ -7,6 +7,7 @@ use <../components/teardrop_cabinets.scad>
 use <../components/headboard.scad>
 use <../components/mattress.scad>
 use <../components/cooler.scad>
+use <../components/wheel.scad>
 
 use <./shell.scad>
 
@@ -20,6 +21,17 @@ galley_open = 0; // [0:0.1:1]
 silverware_open = 0; // [0:0.1:1]
 electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
+
+module driver_wheel() {
+  translate([feet(3), feet(1), inches(-8)])
+  rotate([0, 90, 0])
+    wheel();
+}
+
+module passenger_wheel() {
+  mirror([1, 0, 0])
+    driver_wheel();
+}
 
 shell(show_ceiling, show_sides);
 
@@ -45,5 +57,8 @@ translate([feet(-2.5) + inches(1.25), feet(3) - inches(5), inches(3.25)])
 
 translate([0, inches(-50.25), inches(2.5)])
   headboard();
+
+driver_wheel();
+passenger_wheel();
 
 teardrop_frame();

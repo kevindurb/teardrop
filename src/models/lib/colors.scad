@@ -17,3 +17,8 @@ module color_white() {
   color("#fafafa")
     children();
 }
+
+module color_black() {
+  color("#333")
+    children();
+}
