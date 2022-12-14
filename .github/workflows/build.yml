@@ -18,6 +18,9 @@ jobs:
       - name: Build shell.scad
         run: openscad ./src/models/assemblies/shell.scad -o ./dist/shell.stl
 
+      - name: Build printable_internal.scad
+        run: openscad ./src/models/assemblies/printable_internal.scad -o ./dist/printable_internal.stl
+
       - name: Build preview image
         run: xvfb-run -a openscad ./src/models/assemblies/teardrop.scad -o ./dist/preview.png
 

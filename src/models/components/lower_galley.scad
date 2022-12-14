@@ -39,7 +39,7 @@ module electrical_cabinet_door(open = 0) {
 module cooler_slide(open = 0) {
 }
 
-module lower_galley(silverware_open = 0, electrical_open = 0) {
+module lower_galley_bare() {
   union() {
     translate([0, inches(-0.75), 0])
       foot_wall();
@@ -51,6 +51,12 @@ module lower_galley(silverware_open = 0, electrical_open = 0) {
       water_jug_divider();
     translate([feet(4) + inches(0.75), 0, inches(12)])
       electrical_cabinet_top();
+  }
+}
+
+module lower_galley(silverware_open = 0, electrical_open = 0) {
+  union() {
+    lower_galley_bare();
     translate([feet(4), feet(1.5) - inches(0.75), 0])
       electrical_cabinet_door(electrical_open);
     translate([feet(4), feet(1.5) - inches(0.75), inches(12)])
