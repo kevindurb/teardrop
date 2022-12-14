@@ -31,5 +31,6 @@ jobs:
           files: |
             ./dist/teardrop.stl
             ./dist/shell.stl
+            ./dist/printable_internal.stl
             ./dist/preview.png
 
