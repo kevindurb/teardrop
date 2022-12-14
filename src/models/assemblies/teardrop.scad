@@ -8,6 +8,7 @@ use <../components/headboard.scad>
 use <../components/mattress.scad>
 use <../components/cooler.scad>
 use <../components/wheel.scad>
+use <../components/battery.scad>
 
 use <./shell.scad>
 
@@ -60,5 +61,8 @@ translate([0, inches(-50.25), inches(2.5)])
 
 driver_wheel();
 passenger_wheel();
+
+translate([feet(1.5), feet(3) - inches(5), inches(3.25)])
+  battery();
 
 teardrop_frame();
