@@ -9,6 +9,7 @@ use <../components/mattress.scad>
 use <../components/cooler.scad>
 use <../components/wheel.scad>
 use <../components/battery.scad>
+use <../components/water_tank.scad>
 
 use <./shell.scad>
 
@@ -64,5 +65,11 @@ passenger_wheel();
 
 translate([feet(1.5), feet(3) - inches(5), inches(3.25)])
   battery();
+
+translate([inches(1.5), feet(3) - inches(2), inches(3.25)])
+  water_tank();
+
+translate([inches(9.5), feet(3) - inches(2), inches(3.25)])
+  water_tank();
 
 teardrop_frame();
