@@ -69,7 +69,7 @@ module foot_wall() {
 
 module bottom_cabinet_divider() {
   color_wood()
-    cube([inches(0.75), feet(1.5), inches(17)]);
+    cube([inches(0.75), inches(17.25), inches(17)]);
 }
 
 module water_jug_divider() {
