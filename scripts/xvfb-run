@@ -1,3 +1,0 @@
-#! /bin/bash
-
-docker run --init --rm -v "$(pwd):/openscad" openscad/openscad xvfb-run -a openscad "$@"
