@@ -1,4 +1,5 @@
 use <../lib/convert.scad>
+use <../lib/colors.scad>
 
 ceiling_width = feet(5);
 ceiling_thickness = inches(1.75);
@@ -10,6 +11,7 @@ scale_fix = 1.002;
 
 module teardrop_ceiling_half() {
   cutout_scale = (feet(4) - ceiling_thickness) / feet(4);
+  color_wood()
   difference() {
     // side shape from dxf
     translate([front_offset, 0, bottom_offset])

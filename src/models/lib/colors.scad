@@ -1,5 +1,5 @@
 module color_wood() {
-  color("#f2ba52")
+  color("#F8D89D")
     children();
 }
 
