@@ -24,7 +24,7 @@ electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
 
 module driver_wheel() {
-  translate([feet(3), feet(1), inches(-8)])
+  translate([feet(2.5), feet(1), inches(-12)])
   rotate([0, 90, 0])
     wheel();
 }
@@ -50,7 +50,7 @@ translate([0, inches(30), inches(2.5)])
 translate([0, inches(-1.5), 0])
   teardrop_floor();
 
-translate([feet(-2.5) + inches(0.25), feet(-3) + inches(-14.25), inches(2.5)])
+*translate([feet(-2.5) + inches(0.25), feet(-3) + inches(-14.25), inches(2.5)])
   mattress();
 
 translate([feet(-2.5) + inches(1.25), feet(3) - inches(5), inches(3.25)])
