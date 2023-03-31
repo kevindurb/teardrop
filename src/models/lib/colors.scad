@@ -23,7 +23,7 @@ module color_black() {
     children();
 }
 
-module color_bed_liner() {
+module color_outside() {
   color("#90b0c4")
     children();
 }

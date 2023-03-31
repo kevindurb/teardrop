@@ -13,7 +13,7 @@ module teardrop_ceiling_half() {
   cutout_scale = (feet(4) - ceiling_thickness) / feet(4);
   difference() {
     // side shape from dxf
-    color_bed_liner()
+    color_outside()
     translate([front_offset, 0, bottom_offset])
     rotate([90, 0, 0])
     linear_extrude(height = ceiling_width / 2)

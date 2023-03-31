@@ -42,7 +42,7 @@ module side_extrusion(thickness) {
 }
 
 module outside_side_skin() {
-  color_bed_liner()
+  color_outside()
   difference() {
     side_extrusion(side_skin_thickness);
 
