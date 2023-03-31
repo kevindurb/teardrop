@@ -48,10 +48,12 @@ module teardrop_ceiling() {
     teardrop_ceiling_galley_cutout();
 
     // fan cutout
+    color_black()
     translate([feet(-3), 0, feet(4)])
       cube([inches(14), inches(14), inches(6)], center = true);
 
     // stargazer window cutout
+    color_black()
     translate([feet(-0.25), 0, feet(3.25)])
     rotate([0, 45, 0])
       cube([feet(1), feet(3), inches(6)], center = true);
