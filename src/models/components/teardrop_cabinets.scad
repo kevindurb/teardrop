@@ -1,6 +1,5 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
-use <./silverware_drawer.scad>
 use <./lower_galley.scad>
 use <./upper_galley.scad>
 
