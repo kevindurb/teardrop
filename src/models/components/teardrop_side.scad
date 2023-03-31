@@ -2,15 +2,17 @@ use <../lib/convert.scad>
 use <../lib/colors.scad>
 use <./wheel_well.scad>
 use <./teardrop_ceiling.scad>
+include <../constants/trailer.scad>
 
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
 
-wheel_well_x_offset = feet(4) + inches(2);
+wheel_well_x_offset = AXEL_OFFSET_Y + feet(4) + inches(3);
 
 door_width = inches(30);
 door_height = inches(36);
 door_radius = inches(3);
+door_offset = inches(10);
 
 // Fixes for dxf import
 bottom_offset = inches(-0.67);
@@ -47,7 +49,7 @@ module outside_side_skin() {
     side_extrusion(side_skin_thickness);
 
     // door cut out
-    translate([-door_width + inches(-18), 0, inches(3)])
+    translate([-door_width - door_offset, 0, inches(3)])
     rotate([90, 0, 0])
       door_cutout();
 
@@ -77,12 +79,6 @@ module inside_side_skin() {
   }
 }
 
-/* module side_frame_cutout(width, height) { */
-/*   translate([0, inches(0.25), 0]) */
-/*   rotate([90, 0, 0]) */
-/*     cube([width, height, inches(1.25)]); */
-/* } */
-
 module side_frame() {
   color_wood()
   difference() {
@@ -99,28 +95,36 @@ module side_frame() {
 
       // door frame
       difference() {
-        translate([feet(-4) + inches(-4), inches(-0.75), 0])
-          cube([inches(38), inches(0.75), inches(46)]);
+        translate([inches(-32) - door_offset, inches(-0.75), 0])
+          cube([inches(35), inches(0.75), inches(42)]);
 
-        translate([-door_width + inches(-18), 0, inches(3)])
+        translate([-door_width - door_offset, 0, inches(3)])
         rotate([90, 0, 0])
           door_cutout();
       }
 
+      // door virt
+      translate([-door_width - door_offset - inches(3), inches(-0.75), 0])
+        cube([inches(3), inches(0.75), inches(46)]);
+
       // first virt
-      translate([feet(-5) + inches(-10), inches(-0.75), 0])
-        cube([inches(3), inches(0.75), inches(43)]);
+      translate([feet(-5.25), inches(-0.75), 0])
+        cube([inches(3), inches(0.75), inches(44)]);
 
       // second virt
       translate([feet(-6) + inches(-10), inches(-0.75), 0])
         cube([inches(3), inches(0.75), inches(39)]);
 
       // front horz
-      translate([feet(-1.25), inches(-0.75), inches(20)])
-        cube([inches(18), inches(0.75), inches(3)]);
+      translate([-door_offset + inches(3), inches(-0.75), inches(20)])
+        cube([door_offset, inches(0.75), inches(3)]);
 
-      // back horz
+      // back lower
       translate([feet(-8) + inches(-2), inches(-0.75), inches(18)])
+        cube([feet(4.75), inches(0.75), inches(3)]);
+
+      // back upper
+      translate([feet(-7.5), inches(-0.75), inches(32)])
         cube([feet(4), inches(0.75), inches(3)]);
     }
 

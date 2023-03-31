@@ -1,20 +1,17 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
 use <../components/wheel.scad>
-
-frame_width = feet(4);
-frame_length = feet(8);
-frame_thickness = inches(3);
+include <../constants/trailer.scad>
 
 module trailer_axel() {
   color_black()
-  translate([0, inches(15), inches(-10)])
+  translate([0, AXEL_OFFSET_Y, inches(-10)])
   rotate([0, 90, 0])
-    cylinder(h = frame_width + inches(5), d = inches(3), center  = true);
+    cylinder(h = FRAME_WIDTH + inches(5), d = inches(3), center  = true);
 }
 
 module driver_wheel() {
-  translate([feet(2.5), inches(15), inches(-10)])
+  translate([feet(2.5), AXEL_OFFSET_Y, inches(-10)])
   rotate([0, 90, 0])
     wheel();
 }
@@ -28,37 +25,37 @@ module trailer_tongue() {
   union() {
     translate([inches(-1.5), 0, 0])
     rotate([0, 0, -60])
-      cube([frame_width, frame_thickness, frame_thickness]);
+      cube([FRAME_WIDTH, FRAME_THICKNESS, FRAME_THICKNESS]);
 
     mirror([1, 0, 0])
     translate([inches(-1.5), 0, 0])
     rotate([0, 0, -60])
-      cube([frame_width, frame_thickness, frame_thickness]);
+      cube([FRAME_WIDTH, FRAME_THICKNESS, FRAME_THICKNESS]);
   }
 }
 
 module trailer_frame_half() {
   union() {
-    translate([(frame_width / 2) - frame_thickness, -frame_length / 2, 0])
-      cube([frame_thickness, frame_length, frame_thickness]);
+    translate([(FRAME_WIDTH / 2) - FRAME_THICKNESS, -FRAME_LENGTH / 2, 0])
+      cube([FRAME_THICKNESS, FRAME_LENGTH, FRAME_THICKNESS]);
 
     translate([0, 0, 0])
-      cube([frame_width / 2, frame_thickness, frame_thickness]);
+      cube([FRAME_WIDTH / 2, FRAME_THICKNESS, FRAME_THICKNESS]);
 
-    translate([0, -frame_thickness, 0])
-      cube([frame_width / 2, frame_thickness, frame_thickness]);
+    translate([0, -FRAME_THICKNESS, 0])
+      cube([FRAME_WIDTH / 2, FRAME_THICKNESS, FRAME_THICKNESS]);
 
-    translate([0, (frame_length / 4) - (frame_thickness / 2), 0])
-      cube([frame_width / 2, frame_thickness, frame_thickness]);
+    translate([0, (FRAME_LENGTH / 4) - (FRAME_THICKNESS / 2), 0])
+      cube([FRAME_WIDTH / 2, FRAME_THICKNESS, FRAME_THICKNESS]);
 
-    translate([0, (frame_length / 2) - frame_thickness, 0])
-      cube([frame_width / 2, frame_thickness, frame_thickness]);
+    translate([0, (FRAME_LENGTH / 2) - FRAME_THICKNESS, 0])
+      cube([FRAME_WIDTH / 2, FRAME_THICKNESS, FRAME_THICKNESS]);
 
-    translate([0, -((frame_length / 4) + (frame_thickness / 2)), 0])
-      cube([frame_width / 2, frame_thickness, frame_thickness]);
+    translate([0, -((FRAME_LENGTH / 4) + (FRAME_THICKNESS / 2)), 0])
+      cube([FRAME_WIDTH / 2, FRAME_THICKNESS, FRAME_THICKNESS]);
 
-    translate([0, -(frame_length / 2), 0])
-      cube([frame_width / 2, frame_thickness, frame_thickness]);
+    translate([0, -(FRAME_LENGTH / 2), 0])
+      cube([FRAME_WIDTH / 2, FRAME_THICKNESS, FRAME_THICKNESS]);
   }
 }
 
@@ -72,17 +69,17 @@ module trailer_frame() {
 }
 
 module trailer() {
-  translate([0, 0, -frame_thickness])
+  translate([0, 0, -FRAME_THICKNESS])
   color_black()
   rotate([0, 0, 180])
   union() {
     trailer_frame();
 
-    translate([0, frame_length / 1.5, -frame_thickness])
+    translate([0, FRAME_LENGTH / 1.5, -FRAME_THICKNESS])
     trailer_tongue();
 
-    translate([0, frame_length / 4, -frame_thickness / 2])
-      cube([frame_thickness, frame_length * 1.5, frame_thickness], center = true);
+    translate([0, FRAME_LENGTH / 4, -FRAME_THICKNESS / 2])
+      cube([FRAME_THICKNESS, FRAME_LENGTH * 1.5, FRAME_THICKNESS], center = true);
   }
 
   driver_wheel();
