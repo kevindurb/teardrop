@@ -6,6 +6,13 @@ frame_width = feet(4);
 frame_length = feet(8);
 frame_thickness = inches(3);
 
+module trailer_axel() {
+  color_black()
+  translate([0, inches(15), inches(-10)])
+  rotate([0, 90, 0])
+    cylinder(h = frame_width + inches(5), d = inches(3), center  = true);
+}
+
 module driver_wheel() {
   translate([feet(2.5), inches(15), inches(-10)])
   rotate([0, 90, 0])
@@ -80,6 +87,7 @@ module trailer() {
 
   driver_wheel();
   passenger_wheel();
+  trailer_axel();
 }
 
 trailer();
