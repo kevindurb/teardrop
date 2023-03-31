@@ -6,11 +6,11 @@ floor_thickness = inches(2.5);
 floor_width = feet(5);
 floor_length = feet(8) + inches(3);
 wheel_well_x_offset = feet(2);
-wheel_well_y_offset = feet(1);
+wheel_well_y_offset = inches(-1.5);
 
 module teardrop_floor() {
-  color_wood()
   union() {
+    color_wood()
     difference() {
       translate([0, 0, floor_thickness / 2])
         cube([floor_width, floor_length, floor_thickness], center = true);

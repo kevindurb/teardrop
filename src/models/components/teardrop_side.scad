@@ -1,8 +1,11 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
+use <./wheel_well.scad>
 
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
+
+wheel_well_x_offset = feet(4);
 
 door_width = inches(30);
 door_height = inches(36);
@@ -46,6 +49,14 @@ module outside_side_skin() {
     translate([-door_width + inches(-18), 0, inches(3)])
     rotate([90, 0, 0])
       door_cutout();
+
+    translate([-wheel_well_x_offset, inches(-3), 0])
+    rotate([0, 0, 90])
+      wheel_well_shape();
+
+    translate([-wheel_well_x_offset, inches(-3), 0])
+    rotate([0, 0, 90])
+      wheel_well_cutout();
   }
 }
 
@@ -59,50 +70,60 @@ module inside_side_skin() {
   }
 }
 
-module side_frame_cutout(width, height) {
-  translate([0, inches(0.25), 0])
-  rotate([90, 0, 0])
-    cube([width, height, inches(1.25)]);
-}
+/* module side_frame_cutout(width, height) { */
+/*   translate([0, inches(0.25), 0]) */
+/*   rotate([90, 0, 0]) */
+/*     cube([width, height, inches(1.25)]); */
+/* } */
 
 module side_frame() {
   color_wood()
-  union() {
-    // outer frame
-    difference() {
-      side_extrusion(side_frame_thickness);
+  difference() {
+    union() {
+      // outer frame
+      difference() {
+        side_extrusion(side_frame_thickness);
 
-      translate([inches(-3), inches(0.25), inches(3)])
-        scale([0.93, 1, 0.88])
-        side_extrusion(side_frame_thickness * 2);
+        translate([inches(-3), inches(0.25), inches(3)])
+          scale([0.93, 1, 0.88])
+          side_extrusion(side_frame_thickness * 2);
 
+      }
+
+      // door frame
+      difference() {
+        translate([feet(-4) + inches(-4), inches(-0.75), 0])
+          cube([inches(38), inches(0.75), inches(46)]);
+
+        translate([-door_width + inches(-18), 0, inches(3)])
+        rotate([90, 0, 0])
+          door_cutout();
+      }
+
+      // first virt
+      translate([feet(-5) + inches(-10), inches(-0.75), 0])
+        cube([inches(3), inches(0.75), inches(43)]);
+
+      // second virt
+      translate([feet(-6) + inches(-10), inches(-0.75), 0])
+        cube([inches(3), inches(0.75), inches(39)]);
+
+      // front horz
+      translate([feet(-1.25), inches(-0.75), inches(20)])
+        cube([inches(18), inches(0.75), inches(3)]);
+
+      // back horz
+      translate([feet(-8) + inches(-2), inches(-0.75), inches(18)])
+        cube([feet(4), inches(0.75), inches(3)]);
     }
 
-    // door frame
-    difference() {
-      translate([feet(-4) + inches(-4), inches(-0.75), 0])
-        cube([inches(38), inches(0.75), inches(46)]);
+    translate([-wheel_well_x_offset, inches(-3), 0])
+    rotate([0, 0, 90])
+      wheel_well_shape();
 
-      translate([-door_width + inches(-18), 0, inches(3)])
-      rotate([90, 0, 0])
-        door_cutout();
-    }
-
-    // first virt
-    translate([feet(-5) + inches(-10), inches(-0.75), 0])
-      cube([inches(3), inches(0.75), inches(43)]);
-
-    // second virt
-    translate([feet(-6) + inches(-10), inches(-0.75), 0])
-      cube([inches(3), inches(0.75), inches(39)]);
-
-    // front horz
-    translate([feet(-1.25), inches(-0.75), inches(20)])
-      cube([inches(18), inches(0.75), inches(3)]);
-
-    // back horz
-    translate([feet(-8) + inches(-2), inches(-0.75), inches(18)])
-      cube([feet(4), inches(0.75), inches(3)]);
+    translate([-wheel_well_x_offset, inches(-3), 0])
+    rotate([0, 0, 90])
+      wheel_well_cutout();
   }
 }
 
