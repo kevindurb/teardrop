@@ -24,6 +24,6 @@ module color_black() {
 }
 
 module color_bed_liner() {
-  color("#aaa")
+  color("#90b0c4")
     children();
 }
