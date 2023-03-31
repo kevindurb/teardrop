@@ -38,7 +38,7 @@ translate([0, inches(30), inches(2.5)])
 translate([0, inches(-1.5), 0])
   teardrop_floor();
 
-*translate([feet(-2.5) + inches(0.25), feet(-3) + inches(-14.25), inches(2.5)])
+translate([feet(-2.5) + inches(0.25), feet(-3) + inches(-14.25), inches(2.5)])
   mattress();
 
 translate([feet(-2.5) + inches(1.25), feet(3) - inches(5), inches(3.25)])
