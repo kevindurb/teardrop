@@ -24,7 +24,7 @@ electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
 
 module driver_wheel() {
-  translate([feet(2.5), feet(1), inches(-12)])
+  translate([feet(2.5), feet(1) + inches(1), inches(-8)])
   rotate([0, 90, 0])
     wheel();
 }

@@ -1,14 +1,19 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
 
+wheel_diameter = inches(15);
+tire_diameter = inches(26);
+tire_width = inches(7);
+wheel_width = inches(6);
+
 module wheel() {
   color_black()
   difference() {
-      cylinder(h = inches(10), d = inches(28), center = true);
-      cylinder(h = inches(13), d = inches(15), center = true);
+      cylinder(h = tire_width, d = tire_diameter, center = true);
+      cylinder(h = tire_width + inches(2), d = wheel_diameter, center = true);
   }
   color_steel()
-    cylinder(h = inches(8), d = inches(15), center = true);
+    cylinder(h = wheel_width, d = wheel_diameter, center = true);
 }
 
 wheel();
