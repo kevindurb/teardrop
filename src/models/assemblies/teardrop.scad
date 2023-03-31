@@ -22,7 +22,7 @@ silverware_open = 0; // [0:0.1:1]
 electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
 
-#shell(show_ceiling, show_sides);
+shell(show_ceiling, show_sides);
 
 if (show_galley_door) {
   galley_deg = galley_open * 90;
