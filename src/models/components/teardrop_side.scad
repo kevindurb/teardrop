@@ -6,7 +6,7 @@ use <./teardrop_ceiling.scad>
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
 
-wheel_well_x_offset = feet(4);
+wheel_well_x_offset = feet(4) + inches(2);
 
 door_width = inches(30);
 door_height = inches(36);
