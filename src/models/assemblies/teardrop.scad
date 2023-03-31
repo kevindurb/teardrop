@@ -1,6 +1,6 @@
 use <../lib/convert.scad>
 
-use <../components/teardrop_frame.scad>
+use <../components/trailer_frame.scad>
 use <../components/teardrop_floor.scad>
 use <../components/teardrop_galley_door.scad>
 use <../components/teardrop_cabinets.scad>

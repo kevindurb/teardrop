@@ -1,6 +1,6 @@
 use <../lib/convert.scad>
 
-use <../components/teardrop_frame.scad>
+use <../components/trailer_frame.scad>
 use <../components/teardrop_floor.scad>
 use <../components/teardrop_cabinets.scad>
 use <../components/headboard.scad>
@@ -27,4 +27,4 @@ translate([0, inches(-1.5), 0])
 translate([0, inches(-50.25), inches(2.5)])
   headboard();
 
-teardrop_frame();
+trailer_frame();
