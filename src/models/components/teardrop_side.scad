@@ -1,6 +1,7 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
 use <./wheel_well.scad>
+use <./teardrop_ceiling.scad>
 
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
@@ -41,7 +42,7 @@ module side_extrusion(thickness) {
 }
 
 module outside_side_skin() {
-  color_wood()
+  color_bed_liner()
   difference() {
     side_extrusion(side_skin_thickness);
 
@@ -61,12 +62,18 @@ module outside_side_skin() {
 }
 
 module inside_side_skin() {
+  color_wood()
   difference() {
     outside_side_skin();
 
     // inside 1/4" ply doesnt extend all the way down
     translate([feet(-9), inches(-0.5), inches(-0.5)])
       cube([feet(10), inches(0.75), inches(3)]);
+
+    // Cut out the ceiling
+    translate([10, 1, -1])
+    scale([1.01, 1, 1.01])
+    teardrop_ceiling_half();
   }
 }
 

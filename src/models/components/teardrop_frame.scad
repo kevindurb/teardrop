@@ -7,7 +7,7 @@ frame_thickness = inches(3);
 
 module teardrop_frame() {
   translate([0, 0, -frame_thickness / 2])
-  color_steel()
+  color_black()
   rotate([0, 0, 180])
   union() {
     cube([frame_width, frame_length, frame_thickness], center = true);
