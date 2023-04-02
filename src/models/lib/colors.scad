@@ -27,3 +27,8 @@ module color_outside() {
   color("#90b0c4")
     children();
 }
+
+module color_tinted_window() {
+  color("#33333388")
+    children();
+}

@@ -33,7 +33,7 @@ module outside_side_skin() {
 
     // door cut out
     translate([-door_width - door_offset, 0, inches(3)])
-      door();
+      door_frame();
 
     translate([-wheel_well_x_offset, inches(-3), 0])
     rotate([0, 0, 90])
@@ -81,7 +81,7 @@ module side_frame() {
           cube([inches(35), inches(0.75), inches(42)]);
 
         translate([-door_width - door_offset, inches(-0.5), inches(3)])
-          door();
+          door_frame();
       }
 
       // door virt
@@ -129,6 +129,9 @@ module teardrop_side() {
       side_frame();
 
     inside_side_skin();
+
+    translate([-door_width - door_offset, inches(-0.75), inches(3)])
+      door();
   }
 }
 
