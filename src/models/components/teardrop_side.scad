@@ -120,7 +120,7 @@ module side_frame() {
 }
 
 
-module teardrop_side() {
+module teardrop_side(door_open = 0) {
   union() {
     translate([0, -(side_skin_thickness + side_frame_thickness), 0])
       outside_side_skin();
@@ -131,6 +131,7 @@ module teardrop_side() {
     inside_side_skin();
 
     translate([-door_width - door_offset, inches(-0.75), inches(3)])
+    rotate([0, 0, 90 * door_open])
       door();
   }
 }
