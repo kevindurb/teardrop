@@ -2,48 +2,21 @@ use <../lib/convert.scad>
 use <../lib/colors.scad>
 use <./wheel_well.scad>
 use <./teardrop_ceiling.scad>
+use <./door.scad>
+
 include <../constants/trailer.scad>
 
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
+door_offset = inches(10);
+door_width = inches(30);
 
 wheel_well_x_offset = AXEL_OFFSET_Y + feet(4) + inches(0);
-
-door_width = inches(30);
-door_height = inches(36);
-door_radius = inches(3);
-door_offset = inches(10);
 
 // Fixes for dxf import
 bottom_offset = inches(-0.67);
 front_offset = feet(-8) + inches(-11.07);
 scale_fix = 1.002;
-
-module door_cutout() {
-  thickness = inches(3);
-  radius_offset = door_radius * 2;
-
-  translate([door_radius, door_radius, -thickness / 2])
-  hull() {
-    // bottom left, this creates a angled corner to fit the wheelwell
-    translate([0, inches(6), 0])
-      cylinder(thickness, r1 = door_radius, r2 = door_radius);
-    translate([inches(4.75), 0, 0])
-      cylinder(thickness, r1 = door_radius, r2 = door_radius);
-
-    // bottom right
-    translate([door_width - radius_offset, 0, 0])
-      cylinder(thickness, r1 = door_radius, r2 = door_radius);
-
-    // top left
-    translate([0, door_height -  radius_offset, 0])
-      cylinder(thickness, r1 = door_radius, r2 = door_radius);
-
-    // top right
-    translate([door_width -  radius_offset, door_height -  radius_offset, 0])
-      cylinder(thickness, r1 = door_radius, r2 = door_radius);
-  }
-}
 
 module side_extrusion(thickness) {
   translate([front_offset, 0, bottom_offset])
@@ -60,8 +33,7 @@ module outside_side_skin() {
 
     // door cut out
     translate([-door_width - door_offset, 0, inches(3)])
-    rotate([90, 0, 0])
-      door_cutout();
+      door();
 
     translate([-wheel_well_x_offset, inches(-3), 0])
     rotate([0, 0, 90])
@@ -108,9 +80,8 @@ module side_frame() {
         translate([inches(-32) - door_offset, inches(-0.75), 0])
           cube([inches(35), inches(0.75), inches(42)]);
 
-        translate([-door_width - door_offset, 0, inches(3)])
-        rotate([90, 0, 0])
-          door_cutout();
+        translate([-door_width - door_offset, inches(-0.5), inches(3)])
+          door();
       }
 
       // door virt

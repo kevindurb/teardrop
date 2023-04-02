@@ -10,10 +10,10 @@ module mattress() {
   difference() {
     cube([inches(59), inches(79.5), inches(6)]);
 
-    translate([inches(-6.5), wheel_well_y_offset + inches(2.25), inches(-2.5)])
+    translate([inches(-6.5), wheel_well_y_offset + inches(2.25), inches(-2.25)])
       wheel_well_shape();
 
-    translate([FRAME_WIDTH + inches(5), wheel_well_y_offset + inches(2.25), inches(-2.5)])
+    translate([FRAME_WIDTH + inches(5), wheel_well_y_offset + inches(2.25), inches(-2.25)])
       wheel_well_shape();
   }
 }

@@ -5,7 +5,7 @@ wheel_well_top_width = inches(22);
 wheel_well_base_width = inches(32);
 wheel_well_depth = inches(13);
 wheel_well_base_thickness = inches(2.5);
-wheel_well_height = inches(6) + wheel_well_base_thickness;
+wheel_well_height = inches(6) + wheel_well_base_thickness - inches(0.75);
 
 
 module wheel_well_cutout() {
