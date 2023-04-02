@@ -2,11 +2,9 @@ use <../lib/convert.scad>
 
 use <../components/trailer_frame.scad>
 use <../components/teardrop_floor.scad>
-use <../components/teardrop_cabinets.scad>
 use <../components/headboard.scad>
 use <../components/mattress.scad>
-use <../components/cooler.scad>
-use <../components/water_tank.scad>
+use <./galley.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
@@ -27,25 +25,16 @@ cabinets_open = 0; // [0:0.1:1]
 /*     teardrop_galley_door(); */
 /* } */
 
-translate([0, inches(33), inches(2.5)])
-  teardrop_cabinets(silverware_open, electrical_open, cabinets_open);
-
 translate([0, inches(1.5), 0])
   teardrop_floor();
 
 translate([feet(-2.5) + inches(0.5), feet(-3) + inches(-11.25), inches(2.5)])
   mattress();
 
-translate([feet(-2.5) + inches(1.25), feet(3) - inches(2), inches(3.25)])
-  cooler();
-
 translate([0, inches(-47.25), inches(2.5)])
   headboard();
 
-translate([inches(1.5), feet(3) + inches(1), inches(3.25)])
-  water_tank();
-
-translate([inches(9.5), feet(3) + inches(1), inches(3.25)])
-  water_tank();
+translate([0, feet(3), 0])
+  galley(silverware_open, electrical_open, cabinets_open);
 
 trailer();
