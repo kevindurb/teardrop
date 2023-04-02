@@ -3,7 +3,7 @@ use <../lib/colors.scad>
 use <./wheel_well.scad>
 include <../constants/trailer.scad>
 
-wheel_well_y_offset = AXEL_OFFSET_Y + (FRAME_LENGTH / 2);
+wheel_well_y_offset = AXEL_OFFSET_Y + (FRAME_LENGTH / 2) - inches(3);
 
 module mattress() {
   color_white()

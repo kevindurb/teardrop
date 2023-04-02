@@ -7,7 +7,7 @@ floor_thickness = inches(2.5);
 floor_width = feet(5);
 floor_length = feet(8) + inches(3);
 wheel_well_x_offset = feet(2) - inches(0.75);
-wheel_well_y_offset = AXEL_OFFSET_Y + inches(1.5);
+wheel_well_y_offset = AXEL_OFFSET_Y - inches(1.5);
 
 module teardrop_floor() {
   union() {
