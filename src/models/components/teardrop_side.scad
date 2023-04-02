@@ -7,7 +7,7 @@ include <../constants/trailer.scad>
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
 
-wheel_well_x_offset = AXEL_OFFSET_Y + feet(4) + inches(3);
+wheel_well_x_offset = AXEL_OFFSET_Y + feet(4) + inches(0);
 
 door_width = inches(30);
 door_height = inches(36);
