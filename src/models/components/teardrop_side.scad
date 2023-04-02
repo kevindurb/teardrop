@@ -25,11 +25,21 @@ module door_cutout() {
 
   translate([door_radius, door_radius, -thickness / 2])
   hull() {
-    cylinder(thickness, r1 = door_radius, r2 = door_radius);
+    // bottom left, this creates a angled corner to fit the wheelwell
+    translate([0, inches(6), 0])
+      cylinder(thickness, r1 = door_radius, r2 = door_radius);
+    translate([inches(4.75), 0, 0])
+      cylinder(thickness, r1 = door_radius, r2 = door_radius);
+
+    // bottom right
     translate([door_width - radius_offset, 0, 0])
       cylinder(thickness, r1 = door_radius, r2 = door_radius);
+
+    // top left
     translate([0, door_height -  radius_offset, 0])
       cylinder(thickness, r1 = door_radius, r2 = door_radius);
+
+    // top right
     translate([door_width -  radius_offset, door_height -  radius_offset, 0])
       cylinder(thickness, r1 = door_radius, r2 = door_radius);
   }
