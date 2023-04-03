@@ -7,7 +7,7 @@ use <../components/headboard.scad>
 use <../components/mattress.scad>
 
 use <./galley.scad>
-use <./shell.scad>
+use <./teardrop_shell.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
