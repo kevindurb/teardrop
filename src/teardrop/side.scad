@@ -1,11 +1,12 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
-use <./wheel_well.scad>
-use <./teardrop_ceiling.scad>
-use <./door.scad>
-use <../sketches/teardrop_profile.scad>
+use <../common/lib/convert.scad>
+use <../common/lib/colors.scad>
+use <../common/components/wheel_well.scad>
+use <../common/components/door.scad>
 
-include <../constants/trailer.scad>
+use <./ceiling.scad>
+use <./side_profile.scad>
+
+include <../common/constants/trailer.scad>
 
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);

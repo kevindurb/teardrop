@@ -1,6 +1,6 @@
-use <../lib/convert.scad>
-use <../components/teardrop_ceiling.scad>
-use <../components/teardrop_side.scad>
+use <../common/lib/convert.scad>
+use <./ceiling.scad>
+use <./side.scad>
 
 module passenger_side(door_open = 0) {
   translate([feet(-2.5) + inches(0.25), inches(-51), 0])

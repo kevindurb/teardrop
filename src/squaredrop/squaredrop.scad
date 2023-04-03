@@ -1,10 +1,10 @@
-use <../lib/convert.scad>
+use <../common/lib/convert.scad>
 
-use <../components/trailer_frame.scad>
-use <../components/floor.scad>
-use <../components/headboard.scad>
-use <../components/mattress.scad>
-use <./galley.scad>
+use <../common/components/trailer_frame.scad>
+use <../common/components/floor.scad>
+use <../common/components/headboard.scad>
+use <../common/components/mattress.scad>
+use <../common/assemblies/galley.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;

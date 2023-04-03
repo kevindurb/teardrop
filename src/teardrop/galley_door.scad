@@ -1,5 +1,5 @@
-use <../lib/convert.scad>
-use <./teardrop_ceiling.scad>
+use <../common/lib/convert.scad>
+use <./ceiling.scad>
 
 module teardrop_galley_door() {
   translate([inches(81.75), 0, inches(-40.75)])

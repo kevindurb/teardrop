@@ -1,7 +1,7 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+use <../common/lib/convert.scad>
+use <../common/lib/colors.scad>
 
-use <../sketches/teardrop_profile.scad>
+use <./side_profile.scad>
 
 ceiling_width = feet(5);
 ceiling_thickness = inches(1.75);

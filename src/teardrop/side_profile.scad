@@ -1,4 +1,4 @@
-use <../lib/convert.scad>
+use <../common/lib/convert.scad>
 
 // Fixes for dxf import
 bottom_offset = inches(-0.67);
@@ -10,5 +10,5 @@ module trailer_profile(extrusion_distance) {
   rotate([90, 0, 0])
   linear_extrude(height = extrusion_distance)
   scale([scale_fix, scale_fix])
-      import("../../drawings/sidewall.dxf");
+      import("./sidewall.dxf");
 }
