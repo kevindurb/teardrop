@@ -22,7 +22,7 @@ jobs:
         run: openscad ./src/models/assemblies/printable_internal.scad -o ./dist/printable_internal.stl
 
       - name: Build preview image
-        run: xvfb-run -a openscad ./src/models/assemblies/teardrop.scad -o ./dist/preview.png
+        run: xvfb-run -a openscad ./src/models/assemblies/teardrop.scad -o ./dist/preview.png --imgsize 2650,1440
 
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15
@@ -33,4 +33,3 @@ jobs:
             ./dist/shell.stl
             ./dist/printable_internal.stl
             ./dist/preview.png
-
