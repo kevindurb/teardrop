@@ -15,11 +15,16 @@ show_sides = true;
 show_galley_door = true;
 
 /* [Open / Close] */
-galley_open = 0; // [0:0.1:1]
+galley_open = 1; // [0:0.1:1]
 silverware_open = 0; // [0:0.1:1]
 electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
-doors_open = 0; // [0:0.1:1]
+doors_open = 0.75; // [0:0.1:1]
+
+// Viewport defaults
+$vpr = [80, 0, 225];
+$vpt = [-10, -25, 345];
+$vpd = 6900;
 
 translate([0, inches(3), 0])
   shell(show_ceiling, show_sides, doors_open);

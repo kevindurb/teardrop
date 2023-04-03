@@ -29,6 +29,6 @@ module color_outside() {
 }
 
 module color_tinted_window() {
-  color("#33333388")
+  color("#aac6")
     children();
 }
