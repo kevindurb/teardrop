@@ -1,10 +1,3 @@
 # Teardrop Design
 
-## openSCAD
-
-- Top Level Teardrop Assembly `./src/models/teardrop.scad`
-
-## TODO
- - [ ] Make ceiling lip over walls
- - [ ] Cutout for stargazer window
- - [ ] Cutout for fan
+![Teardrop Picture](https://github.com/kevindurb/teardrop/releases/download/v1.7.0/preview.png)
