@@ -1,14 +1,11 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
 
+use <../sketches/teardrop_profile.scad>
+
 ceiling_width = feet(5);
 ceiling_thickness = inches(1.75);
 stargazer_window_width = feet(4);
-
-// Fixes for dxf import
-bottom_offset = inches(-0.67);
-front_offset = feet(-8) + inches(-11.07);
-scale_fix = 1.002;
 
 module teardrop_ceiling_shell() {
   cutout_scale = (feet(4) - ceiling_thickness) / feet(4);
@@ -16,21 +13,13 @@ module teardrop_ceiling_shell() {
   difference() {
     // side shape from dxf
     color_outside()
-    translate([front_offset, 0, bottom_offset])
-    rotate([90, 0, 0])
-    linear_extrude(height = ceiling_width)
-    scale([scale_fix, scale_fix])
-        import("../../drawings/sidewall.dxf");
+      trailer_profile(ceiling_width);
 
     // cut out inside
     color_wood()
     translate([-ceiling_thickness, 1, -1])
     scale([cutout_scale, 1.1, cutout_scale])
-    translate([front_offset, 0, bottom_offset])
-    rotate([90, 0, 0])
-    linear_extrude(height = ceiling_width)
-    scale([scale_fix, scale_fix])
-        import("../../drawings/sidewall.dxf");
+      trailer_profile(ceiling_width);
   }
 }
 

@@ -3,6 +3,7 @@ use <../lib/colors.scad>
 use <./wheel_well.scad>
 use <./teardrop_ceiling.scad>
 use <./door.scad>
+use <../sketches/teardrop_profile.scad>
 
 include <../constants/trailer.scad>
 
@@ -12,23 +13,10 @@ door_offset = inches(10);
 
 wheel_well_x_offset = AXEL_OFFSET_Y + feet(4) + inches(0);
 
-// Fixes for dxf import
-bottom_offset = inches(-0.67);
-front_offset = feet(-8) + inches(-11.07);
-scale_fix = 1.002;
-
-module side_extrusion(thickness) {
-  translate([front_offset, 0, bottom_offset])
-  rotate([90, 0, 0])
-  linear_extrude(height = thickness)
-  scale([scale_fix, scale_fix])
-      import("../../drawings/sidewall.dxf");
-}
-
 module outside_side_skin() {
   color_outside()
   difference() {
-    side_extrusion(side_skin_thickness);
+    trailer_profile(side_skin_thickness);
 
     // door cut out
     translate([-door_offset, 0, inches(3)])
@@ -66,11 +54,11 @@ module side_frame() {
     union() {
       // outer frame
       difference() {
-        side_extrusion(side_frame_thickness);
+        trailer_profile(side_frame_thickness);
 
         translate([inches(-3), inches(0.25), inches(3)])
           scale([0.93, 1, 0.88])
-          side_extrusion(side_frame_thickness * 2);
+          trailer_profile(side_frame_thickness * 2);
 
       }
 
