@@ -6,6 +6,8 @@ use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
 use <../common/assemblies/galley.scad>
 
+use <./shell.scad>
+
 /* [Show / Hide] */
 show_ceiling = true;
 show_sides = true;
@@ -24,6 +26,8 @@ cabinets_open = 0; // [0:0.1:1]
 /*   rotate([0, 0, -90]) */
 /*     teardrop_galley_door(); */
 /* } */
+
+shell();
 
 translate([0, inches(1.5), 0])
   teardrop_floor();
