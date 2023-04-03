@@ -9,14 +9,15 @@ bottom_offset = inches(-0.67);
 front_offset = feet(-8) + inches(-11.07);
 scale_fix = 1.002;
 
-module teardrop_ceiling_half() {
+module teardrop_ceiling_shell() {
   cutout_scale = (feet(4) - ceiling_thickness) / feet(4);
+  translate([0, ceiling_width / 2, 0])
   difference() {
     // side shape from dxf
     color_outside()
     translate([front_offset, 0, bottom_offset])
     rotate([90, 0, 0])
-    linear_extrude(height = ceiling_width / 2)
+    linear_extrude(height = ceiling_width)
     scale([scale_fix, scale_fix])
         import("../../drawings/sidewall.dxf");
 
@@ -26,7 +27,7 @@ module teardrop_ceiling_half() {
     scale([cutout_scale, 1.1, cutout_scale])
     translate([front_offset, 0, bottom_offset])
     rotate([90, 0, 0])
-    linear_extrude(height = ceiling_width / 2)
+    linear_extrude(height = ceiling_width)
     scale([scale_fix, scale_fix])
         import("../../drawings/sidewall.dxf");
   }
@@ -40,11 +41,7 @@ module teardrop_ceiling_galley_cutout() {
 
 module teardrop_ceiling() {
   difference() {
-    union() {
-      mirror([0, 1, 0])
-        teardrop_ceiling_half();
-      teardrop_ceiling_half();
-    }
+    teardrop_ceiling_shell();
 
     // cut out galley
     teardrop_ceiling_galley_cutout();

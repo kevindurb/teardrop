@@ -56,7 +56,7 @@ module inside_side_skin() {
     // Cut out the ceiling
     translate([10, 1, -1])
     scale([1.01, 1, 1.01])
-    teardrop_ceiling_half();
+    teardrop_ceiling_shell();
   }
 }
 
