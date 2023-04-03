@@ -39,7 +39,7 @@ module door_frame() {
   radius_offset = door_radius * 2;
 
   rotate([90, 0, 0])
-  translate([door_radius, door_radius, -door_thickness / 2])
+  translate([door_radius - door_width, door_radius, -door_thickness / 2])
   color_black()
   hull() {
     // bottom left, this creates a angled corner to fit the wheelwell
@@ -66,12 +66,12 @@ module door() {
   difference() {
     door_frame();
 
-    translate([(door_width / 2) - (window_width / 2), 0, door_height - window_height - inches(3)])
+    translate([(door_width / 2) - (window_width / 2) - door_width, 0, door_height - window_height - inches(3)])
     scale([1, 2, 1])
       door_window();
   }
 
-  translate([(door_width / 2) - (window_width / 2), 0, door_height - window_height - inches(3)])
+  translate([(door_width / 2) - (window_width / 2) - door_width, 0, door_height - window_height - inches(3)])
     door_window();
 }
 

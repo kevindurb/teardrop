@@ -9,7 +9,6 @@ include <../constants/trailer.scad>
 side_skin_thickness = inches(0.25);
 side_frame_thickness = inches(0.75);
 door_offset = inches(10);
-door_width = inches(30);
 
 wheel_well_x_offset = AXEL_OFFSET_Y + feet(4) + inches(0);
 
@@ -32,7 +31,7 @@ module outside_side_skin() {
     side_extrusion(side_skin_thickness);
 
     // door cut out
-    translate([-door_width - door_offset, 0, inches(3)])
+    translate([-door_offset, 0, inches(3)])
       door_frame();
 
     translate([-wheel_well_x_offset, inches(-3), 0])
@@ -80,12 +79,12 @@ module side_frame() {
         translate([inches(-32) - door_offset, inches(-0.75), 0])
           cube([inches(35), inches(0.75), inches(42)]);
 
-        translate([-door_width - door_offset, inches(-0.5), inches(3)])
+        translate([-door_offset, inches(-0.5), inches(3)])
           door_frame();
       }
 
       // door virt
-      translate([-door_width - door_offset - inches(3), inches(-0.75), 0])
+      translate([-door_offset - inches(35), inches(-0.75), 0])
         cube([inches(3), inches(0.75), inches(46)]);
 
       // first virt
@@ -130,7 +129,7 @@ module teardrop_side(door_open = 0) {
 
     inside_side_skin();
 
-    translate([-door_width - door_offset, inches(-0.75), inches(3)])
+    translate([-door_offset, inches(-0.75), inches(3)])
     rotate([0, 0, 90 * door_open])
       door();
   }

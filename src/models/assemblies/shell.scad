@@ -2,21 +2,21 @@ use <../lib/convert.scad>
 use <../components/teardrop_ceiling.scad>
 use <../components/teardrop_side.scad>
 
-module passenger_side() {
+module passenger_side(door_open = 0) {
   translate([feet(-2.5) + inches(0.25), inches(-51), 0])
   rotate([0, 0, -90])
-    teardrop_side();
+    teardrop_side(door_open);
 }
 
-module driver_side() {
+module driver_side(door_open = 0) {
   mirror([1, 0, 0])
-    passenger_side();
+    passenger_side(door_open);
 }
 
-module shell(show_ceiling = true, show_sides = true) {
+module shell(show_ceiling = true, show_sides = true, doors_open = 0) {
   if (show_sides) {
-    passenger_side();
-    driver_side();
+    passenger_side(doors_open);
+    driver_side(doors_open);
   }
 
   if (show_ceiling) {

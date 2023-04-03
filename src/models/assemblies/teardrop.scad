@@ -19,9 +19,10 @@ galley_open = 0; // [0:0.1:1]
 silverware_open = 0; // [0:0.1:1]
 electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
+doors_open = 0; // [0:0.1:1]
 
 translate([0, inches(3), 0])
-  shell(show_ceiling, show_sides);
+  shell(show_ceiling, show_sides, doors_open);
 
 if (show_galley_door) {
   galley_deg = galley_open * 90;
