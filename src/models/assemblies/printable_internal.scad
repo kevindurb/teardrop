@@ -1,7 +1,7 @@
 use <../lib/convert.scad>
 
 use <../components/trailer_frame.scad>
-use <../components/teardrop_floor.scad>
+use <../components/floor.scad>
 use <../components/teardrop_cabinets.scad>
 use <../components/headboard.scad>
 use <../components/mattress.scad>

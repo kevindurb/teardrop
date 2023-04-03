@@ -1,6 +1,6 @@
 use <../lib/convert.scad>
 
-use <../components/teardrop_cabinets.scad>
+use <../components/cabinets.scad>
 use <../components/cooler.scad>
 use <../components/water_tank.scad>
 
