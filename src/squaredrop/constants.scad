@@ -5,4 +5,4 @@ body_width = feet(5);
 ceiling_thickness = inches(2.25);
 wall_thickness = inches(1.25);
 
-ceiling_width = body_width - inches(0.5);
+ceiling_width = body_width;

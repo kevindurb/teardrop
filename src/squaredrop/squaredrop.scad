@@ -28,12 +28,13 @@ doors_open = 0.75; // [0:0.1:1]
 /*     teardrop_galley_door(); */
 /* } */
 
-shell(doors_open);
+shell(show_ceiling, show_sides, doors_open);
 
 translate([0, inches(1.5), 0])
   teardrop_floor();
 
-translate([feet(-2.5) + inches(0.5), feet(-3) + inches(-11.25), inches(2.5)])
+// z - 1 cause it needs to be lower than the wheel wells to not glitch
+translate([feet(-2.5) + inches(0.5), feet(-3) + inches(-11.25), inches(2.5) - 1])
   mattress();
 
 translate([0, inches(-47.25), inches(2.5)])

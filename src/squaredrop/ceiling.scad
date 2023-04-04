@@ -9,10 +9,10 @@ module ceiling() {
     color_outside()
       side_profile(ceiling_width);
 
-    translate([-1, ceiling_thickness, -1])
-    scale([2, 1 - ((ceiling_thickness * 2) / body_length), 1 - (ceiling_thickness / body_height)])
+    translate([-ceiling_width / 2, ceiling_thickness, -1])
+    scale([1, 1 - ((ceiling_thickness * 2) / body_length), 1 - (ceiling_thickness / body_height)])
     color_wood()
-      side_profile(ceiling_width);
+      side_profile(ceiling_width * 2);
 
     translate([-body_width / 2, body_length - feet(5.5),  -body_height / 4])
     rotate([-45, 0, 0])
