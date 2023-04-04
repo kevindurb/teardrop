@@ -1,11 +1,11 @@
 use <../common/lib/convert.scad>
-include <../common/lib/viewport.scad>
+/* include <../common/lib/viewport.scad> */
 
 use <../common/components/trailer_frame.scad>
 use <../common/components/floor.scad>
 use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
-use <../common/assemblies/galley.scad>
+use <./galley.scad>
 
 use <./galley_door.scad>
 use <./shell.scad>

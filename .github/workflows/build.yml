@@ -13,13 +13,10 @@ jobs:
         run: mkdir ./dist
 
       - name: Build teardrop.scad
-        run: openscad ./src/models/assemblies/teardrop.scad -o ./dist/teardrop.stl
+        run: openscad ./src/models/assemblies/teardrop/teardrop.scad -o ./dist/teardrop.stl
 
-      - name: Build shell.scad
-        run: openscad ./src/models/assemblies/shell.scad -o ./dist/shell.stl
-
-      - name: Build printable_internal.scad
-        run: openscad ./src/models/assemblies/printable_internal.scad -o ./dist/printable_internal.stl
+      - name: Build squaredrop.scad
+        run: openscad ./src/models/assemblies/squaredrop/squaredrop.scad -o ./dist/squaredrop.stl
 
       - name: Build preview image
         run: xvfb-run -a openscad ./src/models/assemblies/teardrop.scad -o ./dist/preview.png --imgsize 2650,1440
@@ -30,6 +27,5 @@ jobs:
         with:
           files: |
             ./dist/teardrop.stl
-            ./dist/shell.stl
-            ./dist/printable_internal.stl
+            ./dist/squaredrop.stl
             ./dist/preview.png
