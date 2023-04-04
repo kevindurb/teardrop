@@ -13,13 +13,16 @@ jobs:
         run: mkdir ./dist
 
       - name: Build teardrop.scad
-        run: openscad ./src/models/assemblies/teardrop/teardrop.scad -o ./dist/teardrop.stl
+        run: openscad ./src/teardrop/teardrop.scad -o ./dist/teardrop.stl
 
       - name: Build squaredrop.scad
-        run: openscad ./src/models/assemblies/squaredrop/squaredrop.scad -o ./dist/squaredrop.stl
+        run: openscad ./src/squaredrop/squaredrop.scad -o ./dist/squaredrop.stl
 
       - name: Build preview image
-        run: xvfb-run -a openscad ./src/models/assemblies/teardrop.scad -o ./dist/preview.png --imgsize 2650,1440
+        run: xvfb-run -a openscad ./src/teardrop/teardrop.scad -o ./dist/teardrop.png --camera=-10,-25,345,80,0,225,6900 --imgsize 2650,1440
+
+      - name: Build preview image
+        run: xvfb-run -a openscad ./src/squaredrop/squaredrop.scad -o ./dist/squaredrop.png --camera=-10,-25,345,80,0,225,6900 --imgsize 2650,1440
 
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15
@@ -28,4 +31,5 @@ jobs:
           files: |
             ./dist/teardrop.stl
             ./dist/squaredrop.stl
-            ./dist/preview.png
+            ./dist/teardrop.png
+            ./dist/squaredrop.png
