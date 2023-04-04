@@ -5,15 +5,14 @@ use <../common/components/wheel_well.scad>
 use <../common/components/door.scad>
 
 include <../common/constants/trailer.scad>
+include <./constants.scad>
 
 door_offset_x = inches(30.5);
 door_offset_y = inches(37);
 
-module side_profile() {
-  color_wood()
-  translate([inches(-31), feet(-4.5), 0])
+module side_profile(extrusion_distance) {
   rotate([90, 0, 90])
-  linear_extrude(inches(1.25))
+  linear_extrude(extrusion_distance)
     polygon([
       // Bottom Front
       [inches(6), 0],
@@ -25,18 +24,20 @@ module side_profile() {
 
       // Top Back
       [feet(5.5), feet(4)],
-      [feet(8.5), feet(3.5)],
-      [feet(9.5), feet(2.5)],
+      [body_length - feet(1), body_height - feet(0.5)],
+      [body_length, body_height - feet(1.5)],
 
       // Bottom Back
-      [feet(9.5), inches(10)],
-      [feet(9) - inches(2), 0],
+      [body_length, inches(10)],
+      [body_length - inches(8), 0],
     ]);
 }
 
 module side_shape() {
+  color_wood()
   difference() {
-    side_profile();
+    translate([inches(-31), feet(-4.5), 0])
+      side_profile(inches(1.25));
 
     translate([feet(-3), inches(6), 0])
       wheel_well_shape();
