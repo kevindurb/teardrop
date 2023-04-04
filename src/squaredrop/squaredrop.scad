@@ -18,6 +18,7 @@ galley_open = 0; // [0:0.1:1]
 silverware_open = 0; // [0:0.1:1]
 electrical_open = 0; // [0:0.1:1]
 cabinets_open = 0; // [0:0.1:1]
+doors_open = 0.75; // [0:0.1:1]
 
 /* if (show_galley_door) { */
 /*   galley_deg = galley_open * 90; */
@@ -27,7 +28,7 @@ cabinets_open = 0; // [0:0.1:1]
 /*     teardrop_galley_door(); */
 /* } */
 
-shell();
+shell(doors_open);
 
 translate([0, inches(1.5), 0])
   teardrop_floor();
