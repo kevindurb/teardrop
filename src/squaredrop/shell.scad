@@ -1,7 +1,12 @@
 use <../common/lib/convert.scad>
 use <../common/lib/colors.scad>
 
-module side() {
+use <../common/components/wheel_well.scad>
+use <../common/components/door.scad>
+
+include <../common/constants/trailer.scad>
+
+module side_shape() {
   color_wood()
   translate([inches(-31), feet(-4.5), 0])
   rotate([90, 0, 90])
@@ -24,6 +29,18 @@ module side() {
       [feet(9.5), inches(10)],
       [feet(9) - inches(2), 0],
     ]);
+}
+
+module side() {
+  difference() {
+    side_shape();
+
+    translate([feet(-3), inches(6), 0])
+      wheel_well_shape();
+
+    translate([feet(-3), inches(6), 0])
+      wheel_well_cutout();
+  }
 }
 
 module shell() {
