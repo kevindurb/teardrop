@@ -4,7 +4,7 @@ use <../common/lib/colors.scad>
 module side() {
   color_wood()
   translate([inches(-31), feet(-4.5), 0])
-  rotate([0, 90, 0])
+  rotate([90, 0, 90])
   linear_extrude(inches(1.25))
     polygon([
       [0, 0],
@@ -12,7 +12,6 @@ module side() {
       [feet(8.75), feet(4)],
       [feet(8.75), 0],
     ]);
-    /* cube([inches(1.25), feet(8.75), feet(4)]); */
 }
 
 module shell() {
