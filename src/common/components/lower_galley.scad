@@ -89,8 +89,6 @@ module lower_galley_bare() {
   union() {
     translate([0, inches(-0.75), 0])
       foot_wall();
-    translate([0, feet(-1), inches(17)])
-      counter_top();
     translate([cooler_area_width, 0, 0])
       bottom_cabinet_divider();
     translate([water_jug_divider_offset, 0, 0])

@@ -7,6 +7,7 @@ use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
 
 use <./shell.scad>
+use <./galley.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
@@ -38,7 +39,7 @@ translate([feet(-2.5) + inches(0.5), feet(-3) + inches(-11.25), inches(2.5)])
 translate([0, inches(-47.25), inches(2.5)])
   headboard();
 
-/* translate([0, feet(3), 0]) */
-/*   galley(silverware_open, electrical_open, cabinets_open); */
+translate([0, feet(3), 0])
+  galley(silverware_open, electrical_open, cabinets_open);
 
 trailer();
