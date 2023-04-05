@@ -14,10 +14,7 @@ show_sides = true;
 show_galley_door = true;
 
 /* [Open / Close] */
-galley_open = 0; // [0:0.1:1]
-silverware_open = 0; // [0:0.1:1]
-electrical_open = 0; // [0:0.1:1]
-cabinets_open = 0; // [0:0.1:1]
+open = 0; // [0:0.1:1]
 doors_open = 0.75; // [0:0.1:1]
 
 /* if (show_galley_door) { */
@@ -41,6 +38,6 @@ translate([0, inches(-47.25), inches(2.5)])
   headboard();
 
 translate([0, feet(3), 0])
-  galley(silverware_open, electrical_open, cabinets_open);
+  galley(open);
 
 trailer();

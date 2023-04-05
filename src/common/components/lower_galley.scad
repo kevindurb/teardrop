@@ -1,31 +1,21 @@
 use <../lib/convert.scad>
 use <../lib/colors.scad>
-use <../components/battery.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
 cooler_area_width = inches(30);
 water_jug_area_width = inches(16);
 water_jug_divider_offset = cooler_area_width + water_jug_area_width + inches(0.75);
-battery_area_width = cabinet_unit_width - cooler_area_width - water_jug_area_width - inches(1.5);
+lower_cabinet_width = cabinet_unit_width - cooler_area_width - water_jug_area_width - inches(1.5);
 
 silverware_drawer_height = inches(4.25);
 silverware_drawer_depth = inches(16.5);
-silverware_drawer_width = battery_area_width;
+silverware_drawer_width = lower_cabinet_width;
 
-module battery_tray(open = 0) {
-  translate([0, open * inches(16), 0])
-  union() {
-    color_wood()
-    translate([0, 0, inches(0.5)])
-      cube([battery_area_width, inches(16.5), inches(0.75)]);
-
-    color_hdpe()
-    translate([0, inches(16.5), 0])
-      cube([battery_area_width, inches(0.75), inches(12)]);
-
-    translate([inches(0.25), inches(0.25), inches(1.25)])
-      battery();
-  }
+module lower_cabinet(open = 0) {
+  color_hdpe()
+  translate([0, inches(16.5), 0])
+  rotate([0, 0, 90 * open])
+    cube([lower_cabinet_width, inches(0.75), inches(12)]);
 }
 
 module silverware_drawer(open = 0) {
@@ -79,7 +69,7 @@ module water_jug_divider() {
 
 module electrical_cabinet_top() {
   color_wood()
-    cube([battery_area_width, feet(1.5) - inches(0.75), inches(0.75)]);
+    cube([lower_cabinet_width, feet(1.5) - inches(0.75), inches(0.75)]);
 }
 
 module cooler_slide(open = 0) {
@@ -98,15 +88,15 @@ module lower_galley_bare() {
   }
 }
 
-module lower_galley(silverware_open = 0, electrical_open = 0) {
+module lower_galley(open = 0) {
   union() {
     lower_galley_bare();
     translate([water_jug_divider_offset + inches(0.75), feet(1) + inches(4.5), inches(12.75)])
-      silverware_drawer(silverware_open);
+      silverware_drawer(open);
 
     translate([water_jug_divider_offset + inches(0.75), 0, 0])
-      battery_tray(electrical_open);
+      lower_cabinet(open);
   }
 }
 
-lower_galley(0, 0);
+lower_galley(0);

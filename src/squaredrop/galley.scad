@@ -6,7 +6,7 @@ use <../common/components/water_tank.scad>
 
 use <./cabinets.scad>
 
-module galley(silverware_open = 0, electrical_open = 0, cabinets_open = 0) {
+module galley(open) {
   translate([inches(1.5), inches(1), inches(3.25)])
     water_tank();
 
@@ -17,13 +17,13 @@ module galley(silverware_open = 0, electrical_open = 0, cabinets_open = 0) {
     cooler();
 
   translate([feet(-2) - inches(5.75), inches(-3), inches(2.5)])
-    lower_galley(silverware_open, electrical_open);
+    lower_galley(open);
 
   translate([feet(-2) - inches(5.75), inches(-10), feet(1) + inches(7.5)])
     counter_top();
 
   translate([feet(-2) - inches(5.75), inches(1), feet(1) + inches(8.25)])
-    cabinets(cabinets_open);
+    cabinets(open);
 }
 
 galley();
