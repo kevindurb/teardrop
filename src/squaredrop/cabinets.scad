@@ -10,6 +10,23 @@ third_cabinet_width = (cabinet_unit_width / 3);
 half_cabinet_width = (cabinet_unit_width / 2);
 interior_cabinets_height = cabinet_unit_height + inches(2);
 
+module interior_cabinet_doors() {
+  // left door
+  translate([inches(2.125), inches(-11), inches(1.375)])
+  color_wood()
+    rounded_flat(third_cabinet_width - inches(4.25), interior_cabinets_height - inches(3.25), thickness = inches(0.75));
+
+  // right door
+  translate([(third_cabinet_width * 2) + inches(2.125), inches(-11), inches(1.375)])
+  color_wood()
+    rounded_flat(third_cabinet_width - inches(4.25), interior_cabinets_height - inches(3.25), thickness = inches(0.75));
+
+  // middle top door
+  translate([third_cabinet_width + inches(2.125), inches(-11), inches(9.375)])
+  color_wood()
+    rounded_flat(third_cabinet_width - inches(4.25), inches(12), thickness = inches(0.75));
+}
+
 module interior_cabinets_face() {
   difference() {
     translate([0, inches(-11.75), inches(-0.75)])
@@ -40,6 +57,7 @@ module interior_cabinets_face() {
 
 module interior_cabinets() {
   interior_cabinets_face();
+  interior_cabinet_doors();
 
   // vertical divider
   translate([third_cabinet_width - (inches(0.75) / 2), inches(-11), 0])
@@ -75,8 +93,21 @@ module galley_cabinets_face() {
   }
 }
 
+module galley_cabinet_doors() {
+  // left cutout
+  translate([half_cabinet_width + inches(5.125), inches(7.75), inches(3.125)])
+  color_wood()
+    rounded_flat(half_cabinet_width - inches(8.25), cabinet_unit_height - inches(6.25), thickness = inches(0.75));
+
+  // right cutout
+  translate([inches(10.125), inches(7.75), inches(3.125)])
+  color_wood()
+    rounded_flat(half_cabinet_width - inches(8.25), cabinet_unit_height - inches(6.25), thickness = inches(0.75));
+}
+
 module galley_cabinets() {
   galley_cabinets_face();
+  galley_cabinet_doors();
 }
 
 module cabinets() {
