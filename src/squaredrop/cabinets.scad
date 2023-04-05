@@ -7,6 +7,7 @@ include <./constants.scad>
 cabinet_unit_width = body_width - inches(0.5);
 cabinet_unit_height = inches(21.25);
 third_cabinet_width = (cabinet_unit_width / 3);
+half_cabinet_width = (cabinet_unit_width / 2);
 interior_cabinets_height = cabinet_unit_height + inches(2);
 
 module interior_cabinets_face() {
@@ -56,11 +57,26 @@ module interior_cabinets() {
     cube([third_cabinet_width, inches(11), inches(0.75)]);
 }
 
+module galley_cabinets_face() {
+  difference() {
+    translate([0, inches(7), 0])
+    color_wood()
+      cube([cabinet_unit_width, inches(0.75), cabinet_unit_height - inches(1)]);
+
+    // left cutout
+    translate([half_cabinet_width + inches(5), inches(8), inches(3)])
+    color_wood()
+      rounded_flat(half_cabinet_width - inches(8), cabinet_unit_height - inches(6));
+
+    // right cutout
+    translate([inches(10), inches(8), inches(3)])
+    color_wood()
+      rounded_flat(half_cabinet_width - inches(8), cabinet_unit_height - inches(6));
+  }
+}
+
 module galley_cabinets() {
-  // galley cabinet face
-  translate([0, inches(7), 0])
-  color_wood()
-    cube([cabinet_unit_width, inches(0.75), cabinet_unit_height - inches(1)]);
+  galley_cabinets_face();
 }
 
 module cabinets() {
