@@ -23,7 +23,7 @@ module galley(silverware_open = 0, electrical_open = 0, cabinets_open = 0) {
     counter_top();
 
   translate([feet(-2) - inches(5.75), inches(1), feet(1) + inches(8.25)])
-    cabinets();
+    cabinets(cabinets_open);
 }
 
 galley();

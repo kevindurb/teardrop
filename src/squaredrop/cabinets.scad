@@ -10,21 +10,33 @@ third_cabinet_width = (cabinet_unit_width / 3);
 half_cabinet_width = (cabinet_unit_width / 2);
 interior_cabinets_height = cabinet_unit_height + inches(2);
 
-module interior_cabinet_doors() {
+module interior_cabinet_doors(open = 0) {
+  tall_height = interior_cabinets_height - inches(3.25);
+  width = third_cabinet_width - inches(4.25);
+
   // left door
   translate([inches(2.125), inches(-11), inches(1.375)])
+  translate([0, 0, tall_height])
+  rotate([-90 * open, 0, 0])
+  translate([0, 0, -tall_height])
   color_wood()
-    rounded_flat(third_cabinet_width - inches(4.25), interior_cabinets_height - inches(3.25), thickness = inches(0.75));
+    rounded_flat(width, tall_height, thickness = inches(0.75));
 
   // right door
   translate([(third_cabinet_width * 2) + inches(2.125), inches(-11), inches(1.375)])
+  translate([0, 0, tall_height])
+  rotate([-90 * open, 0, 0])
+  translate([0, 0, -tall_height])
   color_wood()
-    rounded_flat(third_cabinet_width - inches(4.25), interior_cabinets_height - inches(3.25), thickness = inches(0.75));
+    rounded_flat(width, tall_height, thickness = inches(0.75));
 
   // middle top door
   translate([third_cabinet_width + inches(2.125), inches(-11), inches(9.375)])
+  translate([0, inches(-0.75), 0])
+  rotate([135 * open, 0, 0])
+  translate([0, inches(0.75), 0])
   color_wood()
-    rounded_flat(third_cabinet_width - inches(4.25), inches(12), thickness = inches(0.75));
+    rounded_flat(width, inches(12), thickness = inches(0.75));
 }
 
 module interior_cabinets_face() {
@@ -55,9 +67,9 @@ module interior_cabinets_face() {
   }
 }
 
-module interior_cabinets() {
+module interior_cabinets(open = 0) {
   interior_cabinets_face();
-  interior_cabinet_doors();
+  interior_cabinet_doors(open);
 
   // vertical divider
   translate([third_cabinet_width - (inches(0.75) / 2), inches(-11), 0])
@@ -110,7 +122,7 @@ module galley_cabinets() {
   galley_cabinet_doors();
 }
 
-module cabinets() {
+module cabinets(open = 0) {
 
   // middle wall
   color_wood()
@@ -118,7 +130,7 @@ module cabinets() {
 
   galley_cabinets();
 
-  interior_cabinets();
+  interior_cabinets(open);
 }
 
 cabinets();
