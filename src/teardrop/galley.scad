@@ -1,10 +1,11 @@
 use <../common/lib/convert.scad>
 
-use <../common/components/upper_galley.scad>
 use <../common/components/lower_galley.scad>
-use <../common/components/cabinets.scad>
 use <../common/components/cooler.scad>
 use <../common/components/water_tank.scad>
+
+use <./upper_galley.scad>
+use <./cabinets.scad>
 
 module galley(silverware_open = 0, electrical_open = 0, cabinets_open = 0) {
   translate([inches(1.5), inches(1), inches(3.25)])
