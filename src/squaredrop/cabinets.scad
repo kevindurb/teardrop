@@ -105,17 +105,20 @@ module galley_cabinets_face() {
   }
 }
 
+module galley_cabinet_door_single() {
+  color_wood()
+    rounded_flat(half_cabinet_width - inches(8.25), cabinet_unit_height - inches(6.25), thickness = inches(0.75));
+}
+
 module galley_cabinet_doors(open = 0) {
   if (open < 0.5) {
     // left cutout
     translate([half_cabinet_width + inches(5.125), inches(7.75), inches(3.125)])
-    color_wood()
-      rounded_flat(half_cabinet_width - inches(8.25), cabinet_unit_height - inches(6.25), thickness = inches(0.75));
+      galley_cabinet_door_single();
 
     // right cutout
     translate([inches(10.125), inches(7.75), inches(3.125)])
-    color_wood()
-      rounded_flat(half_cabinet_width - inches(8.25), cabinet_unit_height - inches(6.25), thickness = inches(0.75));
+      galley_cabinet_door_single();
   }
 }
 

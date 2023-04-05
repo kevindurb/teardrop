@@ -7,6 +7,7 @@ use <../common/components/mattress.scad>
 
 use <./shell.scad>
 use <./galley.scad>
+use <./cabinets.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
@@ -14,8 +15,8 @@ show_sides = true;
 show_galley_door = true;
 
 /* [Open / Close] */
-open = 0; // [0:0.1:1]
-doors_open = 0.75; // [0:0.1:1]
+open = $t; // [0:0.1:1]
+doors_open = $t; // [0:0.1:1]
 
 /* if (show_galley_door) { */
 /*   galley_deg = galley_open * 90; */
@@ -39,5 +40,16 @@ translate([0, inches(-47.25), inches(2.5)])
 
 translate([0, feet(3), 0])
   galley(open);
+
+if (open >= 0.5) {
+  translate([feet(2) + inches(7), feet(2.5), feet(1.5)])
+    rotate([90, 0, 90])
+    galley_cabinet_door_single();
+
+  mirror([1, 0, 0])
+  translate([feet(2) + inches(7), feet(2.5), feet(1.5)])
+    rotate([90, 0, 90])
+    galley_cabinet_door_single();
+}
 
 trailer();
