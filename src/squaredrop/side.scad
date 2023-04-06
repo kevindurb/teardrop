@@ -56,7 +56,7 @@ module side(door_open = 0) {
   side_shape();
 
   translate([-door_offset_x, -door_offset_y, inches(3)])
-  rotate([0, 0, 90 * door_open - 90])
+  rotate([0, 0, (90 * door_open) - 90])
     door();
 }
 
