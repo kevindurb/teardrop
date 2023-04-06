@@ -30,6 +30,11 @@ module ceiling() {
 
     galley_door_cutout();
 
+    // fan cutout
+    color_black()
+    translate([feet(2.5), feet(3), feet(4)])
+      cube([inches(14), inches(14), inches(6)], center = true);
+
     translate([inches(6), inches(5), feet(3) - inches(1)])
     rotate([-45, 0, 0])
     color_black()

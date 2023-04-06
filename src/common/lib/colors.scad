@@ -28,6 +28,11 @@ module color_outside() {
     children();
 }
 
+module color_logo() {
+  color("#90b0ee")
+    children();
+}
+
 module color_tinted_window() {
   color("#aac6")
     children();
