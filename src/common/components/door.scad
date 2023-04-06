@@ -63,16 +63,20 @@ module door_frame() {
 }
 
 module door() {
-  difference() {
-    door_frame();
+  translate([door_thickness / 2, 0, 0])
+  rotate([0, 0, -90])
+  union() {
+    difference() {
+      door_frame();
+
+      translate([(door_width / 2) - (window_width / 2) - door_width, 0, door_height - window_height - inches(3)])
+      scale([1, 2, 1])
+        door_window();
+    }
 
     translate([(door_width / 2) - (window_width / 2) - door_width, 0, door_height - window_height - inches(3)])
-    scale([1, 2, 1])
       door_window();
   }
-
-  translate([(door_width / 2) - (window_width / 2) - door_width, 0, door_height - window_height - inches(3)])
-    door_window();
 }
 
 door();

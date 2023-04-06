@@ -7,7 +7,7 @@ use <../common/components/door.scad>
 include <../common/constants/trailer.scad>
 include <./constants.scad>
 
-door_offset_x = inches(30.5);
+door_offset_x = inches(31.125);
 door_offset_y = inches(37);
 
 module side_profile(extrusion_distance) {
@@ -45,7 +45,7 @@ module side_shape() {
     translate([feet(-3), inches(6), 0])
       wheel_well_cutout();
 
-    translate([-door_offset_x, -door_offset_y, inches(3)])
+    translate([-door_offset_x + inches(1), -door_offset_y, inches(3)])
     scale([2, 1, 1])
     rotate([0, 0, -90])
       door_frame();
@@ -56,7 +56,7 @@ module side(door_open = 0) {
   side_shape();
 
   translate([-door_offset_x, -door_offset_y, inches(3)])
-  rotate([0, 0, (90 * door_open) - 90])
+  rotate([0, 0, (180 * door_open)])
     door();
 }
 
