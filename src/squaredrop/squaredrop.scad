@@ -4,6 +4,7 @@ use <../common/components/trailer_frame.scad>
 use <../common/components/floor.scad>
 use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
+use <../common/components/tongue_box.scad>
 
 use <./shell.scad>
 use <./galley.scad>
@@ -53,3 +54,6 @@ if (open >= 0.5) {
 }
 
 trailer();
+
+translate([feet(-2.5), feet(-6.5), inches(-3)])
+  tongue_box();
