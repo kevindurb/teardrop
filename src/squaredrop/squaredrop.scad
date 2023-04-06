@@ -27,6 +27,8 @@ if (show_galley_door) {
     galley_door();
 }
 
+shell(show_ceiling, show_sides, doors_open);
+
 translate([0, inches(1.5), 0])
   teardrop_floor();
 
@@ -55,5 +57,3 @@ trailer();
 
 translate([feet(-2.5), feet(-6.5), inches(-3)])
   tongue_box(doors_open);
-
-shell(show_ceiling, show_sides, doors_open);
