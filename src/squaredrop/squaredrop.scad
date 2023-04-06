@@ -56,4 +56,4 @@ if (open >= 0.5) {
 trailer();
 
 translate([feet(-2.5), feet(-6.5), inches(-3)])
-  tongue_box();
+  tongue_box(doors_open);
