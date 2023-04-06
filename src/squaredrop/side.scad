@@ -3,6 +3,7 @@ use <../common/lib/colors.scad>
 
 use <../common/components/wheel_well.scad>
 use <../common/components/door.scad>
+use <./ceiling.scad>
 
 include <../common/constants/trailer.scad>
 include <./constants.scad>
@@ -34,10 +35,10 @@ module side_profile(extrusion_distance) {
 }
 
 module side_shape() {
-  color_wood()
   difference() {
+    color_outside()
     translate([inches(-31), feet(-4.5), 0])
-      side_profile(inches(1.25));
+      side_profile(inches(1));
 
     translate([feet(-3), inches(6), 0])
       wheel_well_shape();

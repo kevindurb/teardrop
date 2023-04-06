@@ -10,6 +10,7 @@ wheel_well_x_offset = feet(2) - inches(0.75);
 wheel_well_y_offset = AXEL_OFFSET_Y - inches(1.5);
 
 module teardrop_floor() {
+  translate([0, 0, 1]) // remove color glitching
   union() {
     color_wood()
     difference() {
