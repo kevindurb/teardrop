@@ -1,5 +1,6 @@
 use <../common/lib/convert.scad>
 use <../common/lib/colors.scad>
+use <../common/lib/rounded.scad>
 
 use <./side.scad>
 include <./constants.scad>
@@ -28,7 +29,18 @@ module ceiling() {
     full_ceiling();
 
     galley_door_cutout();
+
+    translate([inches(6), inches(5), feet(3) - inches(1)])
+    rotate([-45, 0, 0])
+    color_black()
+      rounded_flat(feet(4), feet(1), inches(1), ceiling_thickness * 2);
   }
+
+  translate([inches(6), inches(5), feet(3) - inches(1)])
+  rotate([-45, 0, 0])
+  translate([0, inches(-4), 0])
+  color_tinted_window()
+    rounded_flat(feet(4), feet(1), inches(1), inches(0.25));
 }
 
 ceiling();
