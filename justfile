@@ -1,4 +1,4 @@
-default: build preview
+default *args: (build args) (preview args)
 
 @xvfb-openscad +args:
   docker run --init --rm \
@@ -12,9 +12,9 @@ default: build preview
     openscad/openscad \
     openscad --hardwarnings {{args}}
 
-preview: preview-squaredrop preview-teardrop
+preview *args: (preview-squaredrop args) (preview-teardrop args)
 
-build: build-squaredrop build-teardrop
+build *args: (build-squaredrop args) (build-teardrop args)
 
 preview-squaredrop *args:
   just xvfb-openscad \
