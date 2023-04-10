@@ -5,12 +5,12 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: openscad/openscad
     steps:
       - uses: actions/checkout@v3
 
-      - name: install just
-        run: curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: just
 
       - name: Create dist directory
         run: mkdir ./dist
