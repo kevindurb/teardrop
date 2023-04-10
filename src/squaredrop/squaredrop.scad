@@ -6,6 +6,7 @@ use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
 use <../common/components/tongue_box.scad>
 use <../common/components/ceiling_fan.scad>
+use <../common/components/person.scad>
 
 use <./cabinets.scad>
 use <./galley.scad>
@@ -24,7 +25,7 @@ open = 0; // [0:0.1:1]
 doors_open = 0; // [0:0.1:1]
 
 if (show_galley_door) {
-  galley_deg = doors_open * 90;
+  galley_deg = doors_open * 120;
   translate([0, feet(4), inches(41.75)])
   rotate([galley_deg, 0, 0])
     galley_door();
@@ -63,3 +64,6 @@ translate([feet(-2.5), feet(-6.5), inches(-3)])
 
 translate([0, feet(-2) - inches(1), feet(4) + inches(0.5)])
   ceiling_fan(open);
+
+translate([0, feet(6), inches(-22)])
+  person();
