@@ -1,13 +1,13 @@
 default: build preview
 
 @xvfb-openscad +args:
-  docker run --init --rm -it \
+  docker run --init --rm \
     -v "$(pwd):/openscad" \
     openscad/openscad \
     xvfb-run -a openscad --hardwarnings {{args}}
 
 @openscad +args:
-  docker run --rm -it \
+  docker run --rm \
     -v "$(pwd):/openscad" \
     openscad/openscad \
     openscad --hardwarnings {{args}}
