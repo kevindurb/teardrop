@@ -16,7 +16,7 @@ jobs:
         run: mkdir ./dist
 
       - name: Build
-        run: just
+        run: just -P Showcase
 
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15
