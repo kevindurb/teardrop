@@ -5,11 +5,14 @@ use <../common/components/floor.scad>
 use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
 use <../common/components/tongue_box.scad>
+use <../common/components/ceiling_fan.scad>
 
 use <./cabinets.scad>
 use <./galley.scad>
 use <./galley_door.scad>
 use <./shell.scad>
+
+$fa = 0.01;
 
 /* [Show / Hide] */
 show_ceiling = true;
@@ -57,3 +60,6 @@ trailer();
 
 translate([feet(-2.5), feet(-6.5), inches(-3)])
   tongue_box(doors_open);
+
+translate([0, feet(-2) - inches(1), feet(4) + inches(0.5)])
+  ceiling_fan(open);
