@@ -6,10 +6,10 @@ use <../common/components/headboard.scad>
 use <../common/components/mattress.scad>
 use <../common/components/tongue_box.scad>
 
-use <./shell.scad>
-use <./galley.scad>
 use <./cabinets.scad>
+use <./galley.scad>
 use <./galley_door.scad>
+use <./shell.scad>
 
 /* [Show / Hide] */
 show_ceiling = true;
