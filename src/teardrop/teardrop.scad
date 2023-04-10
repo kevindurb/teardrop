@@ -15,17 +15,14 @@ show_sides = true;
 show_galley_door = true;
 
 /* [Open / Close] */
-galley_open = 1; // [0:0.1:1]
-silverware_open = 0; // [0:0.1:1]
-electrical_open = 0; // [0:0.1:1]
-cabinets_open = 0; // [0:0.1:1]
+open = 0; // [0:0.1:1]
 doors_open = 0.75; // [0:0.1:1]
 
 translate([0, inches(3), 0])
   shell(show_ceiling, show_sides, doors_open);
 
 if (show_galley_door) {
-  galley_deg = galley_open * 90;
+  galley_deg = doors_open * 90;
   translate([0, feet(2.5) + inches(3.75), inches(40.75)])
   rotate([galley_deg, 0, 0])
   rotate([0, 0, -90])
@@ -42,6 +39,6 @@ translate([0, inches(-47.25), inches(2.5)])
   headboard();
 
 translate([0, feet(3), 0])
-  galley(silverware_open, electrical_open, cabinets_open);
+  galley(open);
 
 trailer();

@@ -9,20 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: install just
+        run: apt install just
+
       - name: Create dist directory
         run: mkdir ./dist
 
-      - name: Build teardrop.scad
-        run: openscad ./src/teardrop/teardrop.scad -o ./dist/teardrop.stl
-
-      - name: Build squaredrop.scad
-        run: openscad ./src/squaredrop/squaredrop.scad -o ./dist/squaredrop.stl
-
-      - name: Build preview image
-        run: xvfb-run -a openscad ./src/teardrop/teardrop.scad -o ./dist/teardrop.png --camera=-10,-25,345,80,0,225,6900 --imgsize 2650,1440
-
-      - name: Build preview image
-        run: xvfb-run -a openscad ./src/squaredrop/squaredrop.scad -o ./dist/squaredrop.png --camera=-10,-25,345,80,0,225,6900 --imgsize 2650,1440
+      - name: Build
+        run: just
 
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15

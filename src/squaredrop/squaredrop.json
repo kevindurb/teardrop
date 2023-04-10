@@ -16,8 +16,8 @@
       "show_sides": "false"
     },
     "Showcase": {
-      "open": "0.5",
-      "doors_open": "1",
+      "open": "1",
+      "doors_open": "0.9",
       "show_ceiling": "true",
       "show_galley_door": "true",
       "show_sides": "true"
