@@ -21,7 +21,7 @@ module color_white() {
 }
 
 module color_black() {
-  color(BLACK)
+  color(COLOR_BLACK)
     children();
 }
 
