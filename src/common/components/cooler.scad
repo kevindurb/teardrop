@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 
 module cooler() {
   color_steel()

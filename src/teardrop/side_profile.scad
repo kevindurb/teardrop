@@ -1,4 +1,4 @@
-use <../common/lib/convert.scad>
+include <../common/lib.scad>
 
 // Fixes for dxf import
 bottom_offset = inches(-0.67);

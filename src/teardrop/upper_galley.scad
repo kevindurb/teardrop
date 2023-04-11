@@ -1,5 +1,4 @@
-use <../common/lib/convert.scad>
-use <../common/lib/colors.scad>
+include <../common/lib.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
 main_cabinets_height = inches(16);

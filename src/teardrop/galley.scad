@@ -1,4 +1,4 @@
-use <../common/lib/convert.scad>
+include <../common/lib.scad>
 
 use <../common/components/lower_galley.scad>
 use <../common/components/cooler.scad>

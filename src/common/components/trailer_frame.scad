@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 use <../components/wheel.scad>
 include <../constants/trailer.scad>
 

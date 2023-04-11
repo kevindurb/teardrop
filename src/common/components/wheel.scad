@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 
 wheel_diameter = inches(15);
 tire_diameter = inches(26);

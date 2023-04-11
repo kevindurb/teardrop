@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 
 wheel_well_top_width = inches(22);
 wheel_well_base_width = inches(32);

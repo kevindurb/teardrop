@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 
 cover_width = inches(16.4);
 cover_length = inches(23);

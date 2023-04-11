@@ -1,4 +1,4 @@
-use <../common/lib/convert.scad>
+include <../common/lib.scad>
 use <./ceiling.scad>
 
 module teardrop_galley_door() {

@@ -1,6 +1,4 @@
-use <../common/lib/convert.scad>
-use <../common/lib/colors.scad>
-use <../common/lib/rounded.scad>
+include <../common/lib.scad>
 
 use <./side.scad>
 include <./constants.scad>

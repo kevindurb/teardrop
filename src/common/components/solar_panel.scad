@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 
 // 41.8 x 20.9 x 1.4
 module solar_panel() {

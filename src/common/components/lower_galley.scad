@@ -1,5 +1,4 @@
-use <../lib/convert.scad>
-use <../lib/colors.scad>
+include <../lib.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
 cooler_area_width = inches(30);

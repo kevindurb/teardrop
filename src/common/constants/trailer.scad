@@ -1,4 +1,4 @@
-use <../lib/convert.scad>
+include <../lib/convert.scad>
 
 FRAME_WIDTH = feet(4);
 FRAME_LENGTH = feet(8);
