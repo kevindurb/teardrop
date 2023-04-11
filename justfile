@@ -1,17 +1,19 @@
-default: install-bosl
+home := env_var("HOME")
 
-install-bosl:
-  #! /bin/bash
-  OPENSCAD_LIB_DIR="$HOME/.local/share/OpenSCAD/libraries"
+openscad_lib_dir := if os() == "macos" {
+  home / "Documents/OpenSCAD/libraries"
+} else {
+  home / ".local/share/OpenSCAD/libraries"
+}
 
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    OPENSCAD_LIB_DIR="$HOME/Documents/OpenSCAD/libraries"
-  fi
+default: install-bosl2
 
-  wget -O /tmp/BOSL.tar.gz https://github.com/revarbat/BOSL/archive/refs/tags/v1.0.3.tar.gz
-  mkdir -p "$OPENSCAD_LIB_DIR"
-  tar -xvf /tmp/BOSL.tar.gz -C "$OPENSCAD_LIB_DIR"
-  mv "$OPENSCAD_LIB_DIR/BOSL-1.0.3" "$OPENSCAD_LIB_DIR/BOSL"
+install-bosl2:
+  rm -rf /tmp/BOSL2.tar.gz {{openscad_lib_dir}}/BOSL2-master {{openscad_lib_dir}}/BOSL2
+  wget -O /tmp/BOSL2.tar.gz https://github.com/revarbat/BOSL2/archive/refs/heads/master.tar.gz 2>/dev/null
+  mkdir -p {{openscad_lib_dir}}
+  tar -xvf /tmp/BOSL2.tar.gz -C {{openscad_lib_dir}} 2>/dev/null
+  mv {{openscad_lib_dir}}/BOSL2-master {{openscad_lib_dir}}/BOSL2
 
 @xvfb-openscad +args:
   docker run --init --rm \
