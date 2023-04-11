@@ -7,6 +7,7 @@ use <../common/components/mattress.scad>
 use <../common/components/tongue_box.scad>
 use <../common/components/ceiling_fan.scad>
 use <../common/components/person.scad>
+use <../common/components/solar_panel.scad>
 
 use <./cabinets.scad>
 use <./galley.scad>
@@ -67,3 +68,7 @@ translate([0, feet(-2) - inches(1), feet(4) + inches(0.5)])
 
 translate([0, feet(6), inches(-22)])
   person();
+
+translate([0, feet(1.5), feet(4) - inches(1)])
+rotate([-10, 0, 0])
+  solar_panel();
