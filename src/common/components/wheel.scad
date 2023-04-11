@@ -6,13 +6,12 @@ tire_width = inches(7);
 wheel_width = inches(6);
 
 module wheel() {
-  color_black()
-  difference() {
-      cylinder(h = tire_width, d = tire_diameter, center = true);
-      cylinder(h = tire_width + inches(2), d = wheel_diameter, center = true);
+  diff()
+  recolor(COLOR_BLACK)
+  cyl(h = tire_width, d = tire_diameter) {
+    tag("remove") cyl(h = tire_width + inches(2), d = wheel_diameter);
+    tag("keep") color_steel() cyl(h = wheel_width, d = wheel_diameter);
   }
-  color_steel()
-    cylinder(h = wheel_width, d = wheel_diameter, center = true);
 }
 
 wheel();

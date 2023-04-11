@@ -1,3 +1,5 @@
+COLOR_BLACK = "#333";
+
 module color_wood() {
   color("#F8D89D")
     children();
@@ -19,7 +21,7 @@ module color_white() {
 }
 
 module color_black() {
-  color("#333")
+  color(BLACK)
     children();
 }
 
