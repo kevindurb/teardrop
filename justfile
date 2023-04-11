@@ -16,15 +16,11 @@ install-bosl2:
   mv {{openscad_lib_dir}}/BOSL2-master {{openscad_lib_dir}}/BOSL2
 
 @xvfb-openscad +args:
-  docker run --init --rm \
-    -v "$(pwd):/openscad" \
-    openscad/openscad \
+  docker-compose run --rm openscad \
     xvfb-run -a openscad --hardwarnings {{args}}
 
 @openscad +args:
-  docker run --rm \
-    -v "$(pwd):/openscad" \
-    openscad/openscad \
+  docker-compose run --rm openscad \
     openscad --hardwarnings {{args}}
 
 preview *args: (preview-squaredrop args) (preview-teardrop args)

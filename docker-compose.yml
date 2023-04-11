@@ -1,0 +1,13 @@
+---
+version: '3.8'
+
+services:
+  openscad:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    init: true
+    volumes:
+      - ./src:/openscad/src
+      - ./justfile:/openscad/justfile
+      - ./dist:/openscad/dist
