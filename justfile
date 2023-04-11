@@ -1,4 +1,17 @@
-default *args: (build args) (preview args)
+default: install-bosl
+
+install-bosl:
+  #! /bin/bash
+  OPENSCAD_LIB_DIR="$HOME/.local/share/OpenSCAD/libraries"
+
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    OPENSCAD_LIB_DIR="$HOME/Documents/OpenSCAD/libraries"
+  fi
+
+  wget -O /tmp/BOSL.tar.gz https://github.com/revarbat/BOSL/archive/refs/tags/v1.0.3.tar.gz
+  mkdir -p "$OPENSCAD_LIB_DIR"
+  tar -xvf /tmp/BOSL.tar.gz -C "$OPENSCAD_LIB_DIR"
+  mv "$OPENSCAD_LIB_DIR/BOSL-1.0.3" "$OPENSCAD_LIB_DIR/BOSL"
 
 @xvfb-openscad +args:
   docker run --init --rm \
