@@ -4,9 +4,9 @@ include <../constants/trailer.scad>
 
 module trailer_axel() {
   color_black()
-  translate([0, AXEL_OFFSET_Y, inches(-10)])
-  rotate([0, 90, 0])
-    cylinder(h = FRAME_WIDTH + inches(5), d = inches(3), center  = true);
+  xcyl(h = FRAME_WIDTH + inches(5), d = inches(3)) {
+    children();
+  }
 }
 
 module driver_wheel() {
@@ -81,9 +81,14 @@ module trailer() {
       cube([FRAME_THICKNESS, FRAME_LENGTH * 1.5, FRAME_THICKNESS], center = true);
   }
 
-  driver_wheel();
-  passenger_wheel();
-  trailer_axel();
+/*   driver_wheel(); */
+/*   passenger_wheel(); */
+
+  translate([0, AXEL_OFFSET_Y, inches(-10)])
+  trailer_axel() {
+    position(LEFT) wheel(anchor = RIGHT);
+    position(RIGHT) wheel(anchor = LEFT);
+  }
 }
 
 trailer();
