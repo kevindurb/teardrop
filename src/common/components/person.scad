@@ -2,27 +2,18 @@ include <../lib.scad>
 
 module person() {
   color_white()
-  union() {
-    // Head
-    translate([inches(7), inches(3), feet(6) - inches(6)])
-    scale([1, 1, 1.5])
-      sphere(d = inches(6));
+  translate([inches(0), inches(0), feet(3)])
+  cube([inches(14), inches(6), feet(2)]) {
+    // head
+    position(TOP) scale([1, 1, 1.5]) sphere(d = inches(6), anchor=BOTTOM);
 
-    // Chest
-    translate([inches(0), inches(0), feet(3)])
-      cube([inches(14), inches(6), feet(2)]);
+    // legs
+    left(inches(3)) position(BOTTOM) cylinder(h = feet(3), r = inches(2), anchor=TOP);
+    right(inches(3)) position(BOTTOM) cylinder(h = feet(3), r = inches(2), anchor=TOP);
 
-    // Legs
-    translate([inches(3), inches(3), feet(0)])
-      cylinder(h = feet(3), r = inches(2));
-    translate([inches(11), inches(3), feet(0)])
-      cylinder(h = feet(3), r = inches(2));
-
-    // Arms
-    translate([inches(-1), inches(3), feet(2)])
-      cylinder(h = feet(3), r = inches(2));
-    translate([inches(15), inches(3), feet(2)])
-      cylinder(h = feet(3), r = inches(2));
+    // legs
+    right(inches(1)) position(TOP + LEFT) cylinder(h = feet(3), r = inches(2), anchor=TOP + RIGHT);
+    left(inches(1)) position(TOP + RIGHT) cylinder(h = feet(3), r = inches(2), anchor=TOP + LEFT);
   }
 }
 
