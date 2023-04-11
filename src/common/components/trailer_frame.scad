@@ -24,13 +24,13 @@ module passenger_wheel() {
 module trailer_tongue() {
   union() {
     translate([inches(-1.5), 0, 0])
-    rotate([0, 0, -60])
-      cube([FRAME_WIDTH, FRAME_THICKNESS, FRAME_THICKNESS]);
+    rotate([0, 0, -70])
+      cube([feet(5.5), FRAME_THICKNESS, FRAME_THICKNESS]);
 
     mirror([1, 0, 0])
     translate([inches(-1.5), 0, 0])
-    rotate([0, 0, -60])
-      cube([FRAME_WIDTH, FRAME_THICKNESS, FRAME_THICKNESS]);
+    rotate([0, 0, -70])
+      cube([feet(5.5), FRAME_THICKNESS, FRAME_THICKNESS]);
   }
 }
 
@@ -75,7 +75,7 @@ module trailer() {
   union() {
     trailer_frame();
 
-    translate([0, FRAME_LENGTH / 1.5, -FRAME_THICKNESS])
+    translate([0, feet(7), -FRAME_THICKNESS])
     trailer_tongue();
 
     translate([0, FRAME_LENGTH / 4, -FRAME_THICKNESS / 2])
