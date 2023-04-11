@@ -81,8 +81,18 @@ module interior_cabinets(open = 0) {
   color_wood()
     cube([inches(0.75), inches(11), interior_cabinets_height]);
 
-  // horizontal divider
+  // horizontal left divider
+  translate([0, inches(-11), (interior_cabinets_height / 2) - inches(0.75)])
+  color_wood()
+    cube([third_cabinet_width, inches(11), inches(0.75)]);
+
+  // horizontal middle divider
   translate([third_cabinet_width, inches(-11), inches(6.25)])
+  color_wood()
+    cube([third_cabinet_width, inches(11), inches(0.75)]);
+
+  // horizontal right divider
+  translate([(third_cabinet_width * 2), inches(-11), (interior_cabinets_height / 2) - inches(0.75)])
   color_wood()
     cube([third_cabinet_width, inches(11), inches(0.75)]);
 }
@@ -125,6 +135,21 @@ module galley_cabinet_doors(open = 0) {
 module galley_cabinets(open = 0) {
   galley_cabinets_face();
   galley_cabinet_doors(open);
+
+  // vertical divider
+  translate([half_cabinet_width + inches(3), inches(0.75), 0])
+  color_wood()
+    cube([inches(0.75), inches(7), cabinet_unit_height - inches(1)]);
+
+  // vertical divider
+  translate([inches(8), inches(0.75), 0])
+  color_wood()
+    cube([inches(0.75), inches(7), cabinet_unit_height - inches(1)]);
+
+  // horizontal left divider
+  translate([inches(8.75), inches(0.75), (interior_cabinets_height / 2) - inches(0.75)])
+  color_wood()
+    cube([(half_cabinet_width - inches(4.5)) * 2, inches(6.25), inches(0.75)]);
 }
 
 module cabinets(open = 0) {
@@ -137,4 +162,4 @@ module cabinets(open = 0) {
   interior_cabinets(open);
 }
 
-cabinets();
+cabinets(1);
