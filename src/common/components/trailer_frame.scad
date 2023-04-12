@@ -3,7 +3,7 @@ use <../components/wheel.scad>
 include <../constants/trailer.scad>
 
 module trailer_axel() {
-  recolor(COLOR_BLACK)
+  color_this(COLOR_BLACK)
   xcyl(h = FRAME_WIDTH + inches(5), d = inches(3)) {
     children();
   }
