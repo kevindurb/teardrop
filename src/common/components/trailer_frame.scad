@@ -3,21 +3,10 @@ use <../components/wheel.scad>
 include <../constants/trailer.scad>
 
 module trailer_axel() {
-  color_black()
+  recolor(COLOR_BLACK)
   xcyl(h = FRAME_WIDTH + inches(5), d = inches(3)) {
     children();
   }
-}
-
-module driver_wheel() {
-  translate([feet(2.5), AXEL_OFFSET_Y, inches(-10)])
-  rotate([0, 90, 0])
-    wheel();
-}
-
-module passenger_wheel() {
-  mirror([1, 0, 0])
-    driver_wheel();
 }
 
 module trailer_tongue() {
@@ -31,6 +20,10 @@ module trailer_tongue() {
     rotate([0, 0, -70])
       cube([feet(5.5), FRAME_THICKNESS, FRAME_THICKNESS]);
   }
+}
+
+module frame_tube(l, anchor = CENTER, spin = 0, orient = UP) {
+  cube([l, FRAME_THICKNESS, FRAME_THICKNESS], anchor = anchor, spin = spin, orient = orient) children();
 }
 
 module trailer_frame_half() {
@@ -58,36 +51,31 @@ module trailer_frame_half() {
   }
 }
 
-module trailer_frame() {
-  union() {
-    trailer_frame_half();
-
-    mirror([1, 0, 0])
-      trailer_frame_half();
+module trailer_frame(anchor = CENTER, spin = 0, orient = UP) {
+  recolor(COLOR_BLACK)
+  attachable(anchor, spin, orient, size = [FRAME_LENGTH, FRAME_WIDTH, FRAME_THICKNESS]) {
+    union() {
+      back(FRAME_WIDTH / 2) frame_tube(FRAME_LENGTH, anchor = BACK);
+      xcopies(l = FRAME_LENGTH - FRAME_THICKNESS, n = 5) frame_tube(FRAME_WIDTH - (FRAME_THICKNESS * 2), spin = 90);
+      fwd(FRAME_WIDTH / 2) frame_tube(FRAME_LENGTH, anchor = FRONT);
+    }
+    children();
   }
 }
 
 module trailer() {
-  translate([0, 0, -FRAME_THICKNESS])
-  color_black()
-  rotate([0, 0, 180])
-  union() {
-    trailer_frame();
-
-    translate([0, feet(7), -FRAME_THICKNESS])
+  trailer_frame(spin = 90) {
     trailer_tongue();
-
-    translate([0, FRAME_LENGTH / 4, -FRAME_THICKNESS / 2])
-      cube([FRAME_THICKNESS, FRAME_LENGTH * 1.5, FRAME_THICKNESS], center = true);
   }
 
-/*   driver_wheel(); */
-/*   passenger_wheel(); */
+/*     translate([0, FRAME_LENGTH / 4, -FRAME_THICKNESS / 2]) */
+/*       cube([FRAME_THICKNESS, FRAME_LENGTH * 1.5, FRAME_THICKNESS], center = true); */
+/*   } */
 
   translate([0, AXEL_OFFSET_Y, inches(-10)])
   trailer_axel() {
-    position(LEFT) wheel(anchor = RIGHT);
-    position(RIGHT) wheel(anchor = LEFT);
+    attach(LEFT, BOTTOM) wheel();
+    attach(RIGHT, BOTTOM) wheel();
   }
 }
 
