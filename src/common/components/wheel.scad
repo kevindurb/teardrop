@@ -10,7 +10,7 @@ module wheel(anchor = BOTTOM, spin = 0, orient = UP) {
     diff("hole", "wheel")
     color_this(COLOR_BLACK)
     cyl(h = tire_width, d = tire_diameter) {
-      tag("hole") color_this(COLOR_BLACK)cyl(h = tire_width + inches(2), d = wheel_diameter);
+      tag("hole") color_this(COLOR_BLACK) cyl(h = tire_width + inches(2), d = wheel_diameter);
       tag("wheel") color_this(COLOR_STEEL) cyl(h = wheel_width, d = wheel_diameter);
     }
 

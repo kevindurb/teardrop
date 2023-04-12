@@ -14,7 +14,7 @@ module frame_tube(l, anchor = CENTER, spin = 0, orient = UP) {
 }
 
 module trailer_frame(anchor = CENTER, spin = 0, orient = UP) {
-  recolor(COLOR_BLACK)
+  color_this(COLOR_BLACK)
   attachable(anchor, spin, orient, size = [FRAME_LENGTH, FRAME_WIDTH, FRAME_THICKNESS]) {
     union() {
       back(FRAME_WIDTH / 2) frame_tube(FRAME_LENGTH, anchor = BACK) {
@@ -41,6 +41,7 @@ module trailer(anchor = CENTER, spin = 0, orient = UP) {
   attachable(anchor, spin, orient, size = [FRAME_WIDTH, FRAME_LENGTH, FRAME_THICKNESS]) {
     trailer_frame(spin = 90) {
       position(RIGHT+BOTTOM)
+      color_this(COLOR_BLACK)
       frame_tube(FRAME_LENGTH * 1.5, anchor = TOP+RIGHT);
 
       down(inches(6))
