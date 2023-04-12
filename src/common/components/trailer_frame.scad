@@ -2,9 +2,9 @@ include <../lib.scad>
 use <../components/wheel.scad>
 include <../constants/trailer.scad>
 
-module trailer_axel() {
+module trailer_axel(anchor = CENTER, spin = 0, orient = UP) {
   color_this(COLOR_BLACK)
-  xcyl(h = FRAME_WIDTH + inches(5), d = inches(3)) {
+  xcyl(h = FRAME_WIDTH + inches(5), d = inches(3), anchor = anchor, spin = spin, orient = orient) {
     children();
   }
 }
@@ -37,16 +37,22 @@ module trailer_frame(anchor = CENTER, spin = 0, orient = UP) {
   }
 }
 
-module trailer() {
-  trailer_frame(spin = 90) {
-    position(RIGHT+BOTTOM)
-    frame_tube(FRAME_LENGTH * 1.5, anchor = TOP+RIGHT);
-  };
+module trailer(anchor = CENTER, spin = 0, orient = UP) {
+  attachable(anchor, spin, orient, size = [FRAME_WIDTH, FRAME_LENGTH, FRAME_THICKNESS]) {
+    trailer_frame(spin = 90) {
+      position(RIGHT+BOTTOM)
+      frame_tube(FRAME_LENGTH * 1.5, anchor = TOP+RIGHT);
 
-  translate([0, AXEL_OFFSET_Y, inches(-10)])
-  trailer_axel() {
-    attach(LEFT, BOTTOM) wheel();
-    attach(RIGHT, BOTTOM) wheel();
+      down(inches(6))
+      right(inches(6))
+      position(BOTTOM)
+      trailer_axel(spin = 90, anchor = TOP) {
+        attach(LEFT, BOTTOM) wheel();
+        attach(RIGHT, BOTTOM) wheel();
+      }
+    }
+
+    children();
   }
 }
 
