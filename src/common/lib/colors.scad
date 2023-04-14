@@ -1,5 +1,6 @@
 COLOR_BLACK = "#333";
 COLOR_STEEL = "#888";
+COLOR_HDPE = "#ccd";
 
 module color_wood() {
   color("#F8D89D")
@@ -7,7 +8,7 @@ module color_wood() {
 }
 
 module color_hdpe() {
-  color("#ccd")
+  color(COLOR_HDPE)
     children();
 }
 

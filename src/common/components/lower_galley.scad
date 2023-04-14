@@ -1,6 +1,9 @@
 include <../lib.scad>
 
 cabinet_unit_width = feet(4) + inches(11.5);
+cabinet_unit_height = inches(17);
+cabinet_unit_depth = feet(1.5);
+
 cooler_area_width = inches(30);
 water_jug_area_width = inches(16);
 water_jug_divider_offset = cooler_area_width + water_jug_area_width + inches(0.75);
@@ -46,29 +49,31 @@ module silverware_drawer(open = 0) {
   }
 }
 
-module counter_top() {
-  color_hdpe()
-    cube([cabinet_unit_width, feet(2.5), inches(0.75)]);
+module counter_top(anchor = CENTER, spin = 0, orient = UP) {
+  color_this(COLOR_HDPE)
+    cube([cabinet_unit_width, feet(2.5), inches(0.75)], anchor = anchor, spin = spin, orient = orient) {
+      children();
+    }
 }
 
 module foot_wall() {
   color_wood()
-    cube([cabinet_unit_width, inches(0.75), inches(17)]);
+    cube([cabinet_unit_width, inches(0.75), cabinet_unit_height]);
 }
 
 module bottom_cabinet_divider() {
   color_wood()
-    cube([inches(0.75), inches(17.25), inches(17)]);
+    cube([inches(0.75), cabinet_unit_height + inches(0.25), cabinet_unit_height]);
 }
 
 module water_jug_divider() {
   color_wood()
-    cube([inches(0.75), feet(1.5) - inches(0.75), inches(17)]);
+    cube([inches(0.75), cabinet_unit_depth - inches(0.75), cabinet_unit_height]);
 }
 
 module electrical_cabinet_top() {
   color_wood()
-    cube([lower_cabinet_width, feet(1.5) - inches(0.75), inches(0.75)]);
+    cube([lower_cabinet_width, cabinet_unit_depth - inches(0.75), inches(0.75)]);
 }
 
 module cooler_slide(open = 0) {
@@ -87,14 +92,18 @@ module lower_galley_bare() {
   }
 }
 
-module lower_galley(open = 0) {
-  union() {
-    lower_galley_bare();
-    translate([water_jug_divider_offset + inches(0.75), feet(1) + inches(4.5), inches(12.75)])
-      silverware_drawer(open);
+module lower_galley(open = 0, anchor = CENTER, spin = 0, orient = UP) {
+  attachable(anchor, spin, orient, size = [cabinet_unit_width, cabinet_unit_depth, cabinet_unit_height]) {
+    translate([cabinet_unit_width / -2, cabinet_unit_depth / -2, cabinet_unit_height / -2])
+    union() {
+      lower_galley_bare();
+      translate([water_jug_divider_offset + inches(0.75), feet(1) + inches(4.5), inches(12.75)])
+        silverware_drawer(open);
 
-    translate([water_jug_divider_offset + inches(0.75), 0, 0])
-      lower_cabinet(open);
+      translate([water_jug_divider_offset + inches(0.75), 0, 0])
+        lower_cabinet(open);
+    }
+    children();
   }
 }
 
