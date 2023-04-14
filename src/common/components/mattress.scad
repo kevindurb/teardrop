@@ -2,18 +2,30 @@ include <../lib.scad>
 use <./wheel_well.scad>
 include <../constants/trailer.scad>
 
-wheel_well_y_offset = AXEL_OFFSET_Y + (FRAME_LENGTH / 2) - inches(3);
+wheel_well_y_offset = AXEL_OFFSET_Y - inches(4);
 
-module mattress() {
+mattress_width = inches(59);
+mattress_length = inches(79.5);
+mattress_thickness = inches(6);
+
+module mattress(anchor = CENTER, spin = 0, orient = UP) {
   color_white()
-  difference() {
-    cube([inches(59), inches(79.5), inches(6)]);
+  diff() {
+    cube([mattress_width, mattress_length, mattress_thickness], anchor = anchor, spin = spin, orient = orient) {
+      back(AXEL_OFFSET_Y + inches(8.25))
+      down(inches(2))
+      left(inches(6))
+      position(LEFT + BOTTOM)
+      tag("remove")
+        wheel_well_shape();
 
-    translate([inches(-6.5), wheel_well_y_offset + inches(2.25), inches(-2.25)])
-      wheel_well_shape();
-
-    translate([FRAME_WIDTH + inches(5), wheel_well_y_offset + inches(2.25), inches(-2.25)])
-      wheel_well_shape();
+      back(AXEL_OFFSET_Y + inches(8.25))
+      down(inches(2))
+      left(inches(6))
+      position(RIGHT + BOTTOM)
+      tag("remove")
+        wheel_well_shape();
+    }
   }
 }
 
