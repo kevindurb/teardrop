@@ -9,21 +9,21 @@ mattress_length = inches(79.5);
 mattress_thickness = inches(6);
 
 module mattress(anchor = CENTER, spin = 0, orient = UP) {
-  color_white()
+  color_this("white")
   diff() {
     cube([mattress_width, mattress_length, mattress_thickness], anchor = anchor, spin = spin, orient = orient) {
+      tag("remove")
       back(AXEL_OFFSET_Y + inches(8.25))
       down(inches(2))
       left(inches(6))
       position(LEFT + BOTTOM)
-      tag("remove")
         wheel_well_shape();
 
+      tag("remove")
       back(AXEL_OFFSET_Y + inches(8.25))
       down(inches(2))
       left(inches(6))
       position(RIGHT + BOTTOM)
-      tag("remove")
         wheel_well_shape();
     }
   }

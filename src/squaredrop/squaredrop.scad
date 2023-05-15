@@ -3,7 +3,6 @@ include <../common/lib.scad>
 use <../common/components/trailer_frame.scad>
 use <../common/components/floor.scad>
 use <../common/components/headboard.scad>
-use <../common/components/mattress.scad>
 use <../common/components/tongue_box.scad>
 use <../common/components/ceiling_fan.scad>
 use <../common/components/person.scad>
@@ -52,10 +51,6 @@ trailer() {
     galley(open, anchor = BOTTOM+BACK);
 
     position(TOP + FRONT) headboard();
-
-    down(1)
-    position(TOP + FRONT)
-    mattress(anchor = BOTTOM + FRONT);
   }
 
   fwd(inches(6))
