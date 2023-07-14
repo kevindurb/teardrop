@@ -10,14 +10,6 @@ include <./constants.scad>
 door_offset_x = inches(31.125);
 door_offset_y = inches(37);
 
-module mountains_logo() {
-  color_white()
-  rotate([90, 0, 90])
-  linear_extrude(0.25)
-  scale([7, 8])
-    import("./mountains.svg", center = true);
-}
-
 module side_profile(extrusion_distance) {
   rotate([90, 0, 90])
   linear_extrude(extrusion_distance)
@@ -66,9 +58,6 @@ module side(door_open = 0) {
   translate([-door_offset_x, -door_offset_y, inches(3)])
   rotate([0, 0, (180 * door_open)])
     door();
-
-  translate([feet(2) + inches(7), feet(2) + inches(2), feet(2)])
-    mountains_logo();
 }
 
 side();
