@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an OpenSCAD project for designing parametric trailer campers (teardrops and squaredrops). The project generates 3D models and renders using OpenSCAD through Docker containers, with build automation via Task.
+This is an OpenSCAD project for designing parametric trailer campers (teardrops and squaredrops). The project generates 3D models and renders using OpenSCAD through Podman containers, with build automation via Task.
 
 ## Development Environment
 
-The project requires Docker and Task (command runner). OpenSCAD runs inside Docker containers with X11 forwarding for GUI operations. The BOSL2 library is used for advanced geometric operations.
+The project requires Podman and Task (command runner). OpenSCAD runs inside rootless Podman containers with X11 forwarding for GUI operations. The BOSL2 library is used for advanced geometric operations.
 
 ## Common Commands
 
@@ -20,7 +20,8 @@ The project requires Docker and Task (command runner). OpenSCAD runs inside Dock
 - `task build` - Generate STL files for both designs
 - `task build-teardrop` - Generate STL file for teardrop design only
 - `task build-squaredrop` - Generate STL file for squaredrop design only
-- `task openscad [args]` - Run OpenSCAD with hardware warnings in Docker container
+- `task build-image` - Build the OpenSCAD container image using Podman
+- `task openscad [args]` - Run OpenSCAD with hardware warnings in Podman container
 - `task xvfb-openscad [args]` - Run OpenSCAD with virtual display (for headless rendering)
 
 ## Architecture
@@ -51,6 +52,13 @@ Components are modular and reusable between designs:
 
 ### Rendering Configuration
 - Camera positioning and image sizes are pre-configured in Taskfile.yml
-- Docker container mounts source code and output directories
+- Podman container uses rootless execution with proper SELinux labeling for security
+- Container automatically mounts source code and output directories with `:Z` labels
 - Parameter sets in JSON files control what elements are visible/hidden
 - BOSL2 attachment system enables precise component positioning and relationships
+
+### Container Architecture
+- Uses `Containerfile` (OCI standard) instead of Dockerfile for better tool compatibility
+- Direct Podman commands replace docker-compose for simplified container management
+- Rootless containers provide enhanced security without requiring daemon processes
+- Automatic image building ensures containers are always up-to-date before execution

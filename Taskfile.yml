@@ -10,6 +10,7 @@ vars:
       else
         echo "$HOME/.local/share/OpenSCAD/libraries"
       fi
+  CONTAINER_IMAGE: openscad-local
 
 tasks:
   default:
@@ -26,17 +27,38 @@ tasks:
       - tar -xvf /tmp/BOSL2.tar.gz -C {{.OPENSCAD_LIB_DIR}} 2>/dev/null
       - mv {{.OPENSCAD_LIB_DIR}}/BOSL2-master {{.OPENSCAD_LIB_DIR}}/BOSL2
 
+  build-image:
+    desc: Build the OpenSCAD container image
+    cmds:
+      - podman build -f Containerfile -t {{.CONTAINER_IMAGE}} .
+
   xvfb-openscad:
     desc: Run OpenSCAD with virtual display (for headless rendering)
+    deps: [build-image]
     silent: true
     cmds:
-      - docker-compose run --rm openscad xvfb-run -a openscad --hardwarnings {{.CLI_ARGS}}
+      - >
+        podman run --rm
+        -v ./src:/openscad/src:Z
+        -v ./Taskfile.yml:/openscad/Taskfile.yml:ro,Z
+        -v ./dist:/openscad/dist:Z
+        --workdir /openscad
+        {{.CONTAINER_IMAGE}}
+        xvfb-run -a openscad --hardwarnings {{.CLI_ARGS}}
 
   openscad:
-    desc: Run OpenSCAD with hardware warnings in Docker container
+    desc: Run OpenSCAD with hardware warnings in Podman container
+    deps: [build-image]
     silent: true
     cmds:
-      - docker-compose run --rm openscad openscad --hardwarnings {{.CLI_ARGS}}
+      - >
+        podman run --rm
+        -v ./src:/openscad/src:Z
+        -v ./Taskfile.yml:/openscad/Taskfile.yml:ro,Z
+        -v ./dist:/openscad/dist:Z
+        --workdir /openscad
+        {{.CONTAINER_IMAGE}}
+        openscad --hardwarnings {{.CLI_ARGS}}
 
   preview:
     desc: Generate PNG previews for both teardrop and squaredrop designs
