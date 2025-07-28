@@ -1,4 +1,4 @@
-FROM openscad/openscad
+FROM openscad/openscad:dev
 
 ENV OPENSCADPATH="/openscad/.local/share/OpenSCAD/libraries"
 RUN mkdir -p $OPENSCADPATH
