@@ -8,18 +8,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: taiki-e/install-action@v2
+      - uses: arduino/setup-task@v2
         with:
-          tool: just
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create dist directory
         run: mkdir ./dist
 
       - name: Build STLs
-        run: just build
+        run: task build
 
       - name: Build Preview Images
-        run: just preview -P Showcase
+        run: task preview -- -P Showcase
 
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.15
