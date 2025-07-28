@@ -4,24 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an OpenSCAD project for designing parametric trailer campers (teardrops and squaredrops). The project generates 3D models and renders using OpenSCAD through Docker containers, with build automation via Just.
+This is an OpenSCAD project for designing parametric trailer campers (teardrops and squaredrops). The project generates 3D models and renders using OpenSCAD through Docker containers, with build automation via Task.
 
 ## Development Environment
 
-The project requires Docker and Just (command runner). OpenSCAD runs inside Docker containers with X11 forwarding for GUI operations. The BOSL2 library is used for advanced geometric operations.
+The project requires Docker and Task (command runner). OpenSCAD runs inside Docker containers with X11 forwarding for GUI operations. The BOSL2 library is used for advanced geometric operations.
 
 ## Common Commands
 
-- `just` - Install BOSL2 library (default target)
-- `just install-bosl2` - Download and install BOSL2 library to OpenSCAD libraries directory
-- `just preview` - Generate PNG previews for both teardrop and squaredrop designs
-- `just preview-teardrop` - Generate PNG preview of teardrop design only  
-- `just preview-squaredrop` - Generate PNG preview of squaredrop design only
-- `just build` - Generate STL files for both designs
-- `just build-teardrop` - Generate STL file for teardrop design only
-- `just build-squaredrop` - Generate STL file for squaredrop design only
-- `just openscad [args]` - Run OpenSCAD with hardware warnings in Docker container
-- `just xvfb-openscad [args]` - Run OpenSCAD with virtual display (for headless rendering)
+- `task` - Install BOSL2 library (default target)
+- `task install-bosl2` - Download and install BOSL2 library to OpenSCAD libraries directory
+- `task preview` - Generate PNG previews for both teardrop and squaredrop designs
+- `task preview-teardrop` - Generate PNG preview of teardrop design only  
+- `task preview-squaredrop` - Generate PNG preview of squaredrop design only
+- `task build` - Generate STL files for both designs
+- `task build-teardrop` - Generate STL file for teardrop design only
+- `task build-squaredrop` - Generate STL file for squaredrop design only
+- `task openscad [args]` - Run OpenSCAD with hardware warnings in Docker container
+- `task xvfb-openscad [args]` - Run OpenSCAD with virtual display (for headless rendering)
 
 ## Architecture
 
@@ -50,7 +50,7 @@ Components are modular and reusable between designs:
 - Utility components (battery, cooler, water_tank, solar_panel)
 
 ### Rendering Configuration
-- Camera positioning and image sizes are pre-configured in justfile
+- Camera positioning and image sizes are pre-configured in Taskfile.yml
 - Docker container mounts source code and output directories
 - Parameter sets in JSON files control what elements are visible/hidden
 - BOSL2 attachment system enables precise component positioning and relationships

@@ -1,0 +1,97 @@
+version: '3'
+
+vars:
+  HOME:
+    sh: echo $HOME
+  OPENSCAD_LIB_DIR:
+    sh: |
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "$HOME/Documents/OpenSCAD/libraries"
+      else
+        echo "$HOME/.local/share/OpenSCAD/libraries"
+      fi
+
+tasks:
+  default:
+    desc: Install BOSL2 library
+    cmds:
+      - task: install-bosl2
+
+  install-bosl2:
+    desc: Download and install BOSL2 library to OpenSCAD libraries directory
+    cmds:
+      - rm -rf /tmp/BOSL2.tar.gz {{.OPENSCAD_LIB_DIR}}/BOSL2-master {{.OPENSCAD_LIB_DIR}}/BOSL2
+      - wget -O /tmp/BOSL2.tar.gz https://github.com/revarbat/BOSL2/archive/refs/heads/master.tar.gz 2>/dev/null
+      - mkdir -p {{.OPENSCAD_LIB_DIR}}
+      - tar -xvf /tmp/BOSL2.tar.gz -C {{.OPENSCAD_LIB_DIR}} 2>/dev/null
+      - mv {{.OPENSCAD_LIB_DIR}}/BOSL2-master {{.OPENSCAD_LIB_DIR}}/BOSL2
+
+  xvfb-openscad:
+    desc: Run OpenSCAD with virtual display (for headless rendering)
+    silent: true
+    cmds:
+      - docker-compose run --rm openscad xvfb-run -a openscad --hardwarnings {{.CLI_ARGS}}
+
+  openscad:
+    desc: Run OpenSCAD with hardware warnings in Docker container
+    silent: true
+    cmds:
+      - docker-compose run --rm openscad openscad --hardwarnings {{.CLI_ARGS}}
+
+  preview:
+    desc: Generate PNG previews for both teardrop and squaredrop designs
+    deps:
+      - preview-squaredrop
+      - preview-teardrop
+
+  build:
+    desc: Generate STL files for both designs
+    deps:
+      - build-squaredrop
+      - build-teardrop
+
+  preview-squaredrop:
+    desc: Generate PNG preview of squaredrop design only
+    cmds:
+      - task: xvfb-openscad
+        vars:
+          CLI_ARGS: >-
+            ./src/squaredrop/squaredrop.scad
+            -o ./dist/squaredrop.png
+            -p ./src/squaredrop/squaredrop.json
+            --camera=-10,-25,345,80,0,225,6900
+            --imgsize 2650,1440
+            {{.CLI_ARGS}}
+
+  preview-teardrop:
+    desc: Generate PNG preview of teardrop design only
+    cmds:
+      - task: xvfb-openscad
+        vars:
+          CLI_ARGS: >-
+            ./src/teardrop/teardrop.scad
+            -o ./dist/teardrop.png
+            -p ./src/teardrop/teardrop.json
+            --camera=-10,-25,345,80,0,225,6900
+            --imgsize 2650,1440
+            {{.CLI_ARGS}}
+
+  build-squaredrop:
+    desc: Generate STL file for squaredrop design only
+    cmds:
+      - task: openscad
+        vars:
+          CLI_ARGS: >-
+            ./src/squaredrop/squaredrop.scad
+            -o ./dist/squaredrop.stl
+            {{.CLI_ARGS}}
+
+  build-teardrop:
+    desc: Generate STL file for teardrop design only
+    cmds:
+      - task: openscad
+        vars:
+          CLI_ARGS: >-
+            ./src/teardrop/teardrop.scad
+            -o ./dist/teardrop.stl
+            {{.CLI_ARGS}}
